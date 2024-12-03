@@ -65,7 +65,7 @@
                     <content>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                             <children>
-                                <Button fx:id="btnUserList" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#openUserList" onMouseClicked="#openUserList" prefHeight="66.0" prefWidth="86.0" text="LIST USERS">
+                                <Button fx:id="btnUserList" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#openUserList" prefHeight="66.0" prefWidth="86.0" text="LIST USERS">
                                     <font>
                                         <Font name="System Bold" size="10.0" />
                                     </font>
@@ -75,7 +75,7 @@
                                         <Image url="@image/userlist.png" />
                                     </image>
                                 </ImageView>
-                                <Button fx:id="btnUserUpdate" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="266.0" mnemonicParsing="false" onAction="#openUserUpdate" onMouseClicked="#openUserUpdate" prefHeight="66.0" prefWidth="86.0" text="UPDATE USER">
+                                <Button fx:id="btnUserUpdate" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="266.0" mnemonicParsing="false" onMouseClicked="#openUserUpdate" prefHeight="66.0" prefWidth="86.0" text="UPDATE USER">
                                     <font>
                                         <Font name="System Bold" size="10.0" />
                                     </font>
@@ -85,7 +85,7 @@
                                         <Image url="@image/userupdate.png" />
                                     </image>
                                 </ImageView>
-                                <Button fx:id="btnUserDelete" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="381.0" mnemonicParsing="false" onAction="#openUserDelete" onMouseClicked="#openUserDelete" prefHeight="66.0" prefWidth="86.0" text="DELETE USER">
+                                <Button fx:id="btnUserDelete" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="381.0" mnemonicParsing="false" onMouseClicked="#openUserDelete" prefHeight="66.0" prefWidth="86.0" text="DELETE USER">
                                     <font>
                                         <Font name="System Bold" size="10.0" />
                                     </font>
