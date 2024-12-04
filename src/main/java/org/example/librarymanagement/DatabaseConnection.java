@@ -6,58 +6,70 @@ import org.example.librarymanagement.Class.Book;
 import org.example.librarymanagement.Class.User;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/library_copy";
-    private static final String USER = "root";
-    private static final String PASSWORD = "trandong1302";
-
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
-    }
-
-    public static void createBook(Book book) {
-        String sql = "INSERT INTO books (ISBN, author, title, year, pageNumber) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, book.getISBN());
-            stmt.setString(2, book.getAuthor());
-            stmt.setString(3, book.getTitle());
-            stmt.setInt(4, book.getYear());
-            stmt.setInt(5, book.getPageNumber());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        private static final String URL = "jdbc:mysql://localhost:3306/library_copy";
+        private static final String USER = "root";
+        private static final String PASSWORD = "trandong1302";
+    
+        public static Connection getConnection() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
         }
-    }
 
-    public static Book findBookByTitle(String title) {
-        String sql = "SELECT * FROM books WHERE title = ?";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, title);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return new Book(
-                        rs.getString("author"),
-                        rs.getString("ISBN"),
-                        rs.getString("title"),
-                        rs.getInt("year"),
-                        rs.getInt("pageNumber")
-                );
+        public static void createBook(Book book) {
+            String sql = "INSERT INTO books (ISBN, author, title, year, pageNumber, isBorrowed, quantity, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, book.getISBN());
+                stmt.setString(2, book.getAuthor());
+                stmt.setString(3, book.getTitle());
+                stmt.setInt(4, book.getYear());
+                stmt.setInt(5, book.getPageNumber());
+                stmt.setBoolean(6, book.getIsBorrowed());
+                stmt.setInt(7, book.getQuantity());
+                stmt.setString(8, book.getDescription());
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return null;
-    }
+
+        public static Book findBookByTitle(String title) {
+            String sql = "SELECT * FROM books WHERE title = ?";
+            try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, title);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    return new Book(
+                            rs.getString("author"),
+                            rs.getString("ISBN"),
+                            rs.getString("title"),
+                            rs.getInt("year"),
+                            rs.getInt("pageNumber"),
+                            rs.getBoolean("isBorrowed"),
+                            rs.getInt("quantity"),
+                            rs.getString("description")
+                    );
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
 
         public static void updateBook(Book book) {
-            String sql = "UPDATE books SET title = ?, author = ?, year = ?, pageNumber = ? WHERE ISBN = ?";
+            String sql = "UPDATE books SET title = ?, author = ?, year = ?, pageNumber = ?, quantity = ?, description = ? WHERE ISBN = ?";
             try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, book.getTitle());
                 stmt.setString(2, book.getAuthor());
                 stmt.setInt(3, book.getYear());
                 stmt.setInt(4, book.getPageNumber());
-                stmt.setString(5, book.getISBN());
+                stmt.setInt(5, book.getQuantity());
+                stmt.setString(6, book.getDescription());
+                stmt.setString(7, book.getISBN());  // Đảm bảo không thay đổi ISBN trong cơ sở dữ liệu
+
+                // Debug: In câu lệnh SQL ra để kiểm tra
+                System.out.println("Debug: " + stmt.toString());
 
                 int rowsAffected = stmt.executeUpdate();
                 if (rowsAffected > 0) {
@@ -68,37 +80,42 @@ public class DatabaseConnection {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-    }
-
-
-    public static void deleteBookByTitle(String title) {
-        String sql = "DELETE FROM books WHERE title = ?";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, title);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-    }
 
-    public static ObservableList<Book> getAllBooks() {
-        ObservableList<Book> books = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM books";
-        try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                books.add(new Book(
-                        rs.getString("ISBN"),
-                        rs.getString("author"),
-                        rs.getString("title"),
-                        rs.getInt("year"),
-                        rs.getInt("pageNumber")
-                ));
+
+
+
+        public static void deleteBookByTitle(String title) {
+            String sql = "DELETE FROM books WHERE title = ?";
+            try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, title);
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return books;
-    }
+
+        public static ObservableList<Book> getAllBooks() {
+            ObservableList<Book> books = FXCollections.observableArrayList();
+            String sql = "SELECT * FROM books";
+            try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+                while (rs.next()) {
+                    books.add(new Book(
+                            rs.getString("author"),
+                            rs.getString("ISBN"),
+                            rs.getString("title"),
+                            rs.getInt("year"),
+                            rs.getInt("pageNumber"),
+                            rs.getBoolean("isBorrowed"),
+                            rs.getInt("quantity"),
+                            rs.getString("description")
+                    ));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return books;
+        }
 
     public static void saveUser(User user) {
         String sql = "INSERT INTO users (fullName, password, address, email, phone) VALUES (?, ?, ?, ?, ?)";
@@ -205,6 +222,5 @@ public class DatabaseConnection {
         }
         return null;
     }
-
 
 }

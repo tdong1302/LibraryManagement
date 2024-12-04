@@ -25,14 +25,19 @@ public class BookUpdateController {
     @FXML
     private TextField txtAuthor;
 
-    @FXML
-    private TextField txtISBN;
 
     @FXML
     private TextField txtYear;
 
     @FXML
     private TextField txtPageNumber;
+
+
+    @FXML
+    private TextField txtQuantity;
+
+    @FXML
+    private TextField txtDescription;
 
     @FXML
     private Button btnUpdate;
@@ -69,28 +74,24 @@ public class BookUpdateController {
                 Book book = new Book();
                 book.setTitle(selectedBookTitle);
                 Book foundBook = book.read();
-                System.out.println("Debug: Sách tìm thấy: " + (foundBook != null ? foundBook.getTitle() : "Không tìm thấy")); // DEBUG
 
                 if (foundBook != null) {
                     String title = txtBookTitle.getText();
                     String author = txtAuthor.getText();
-                    String ISBN = txtISBN.getText();
                     int year = Integer.parseInt(txtYear.getText());
                     int pageNumber = Integer.parseInt(txtPageNumber.getText());
-
-                    System.out.println("Debug: Thông tin sách trước khi cập nhật: " +
-                            "Title=" + foundBook.getTitle() + ", Author=" + foundBook.getAuthor() +
-                            ", ISBN=" + foundBook.getISBN() + ", Year=" + foundBook.getYear() +
-                            ", PageNumber=" + foundBook.getPageNumber()); // DEBUG
+                    int quantity = Integer.parseInt(txtQuantity.getText());
+                    String description = txtDescription.getText();
 
                     foundBook.setTitle(title);
                     foundBook.setAuthor(author);
-                    foundBook.setISBN(ISBN);
                     foundBook.setYear(year);
                     foundBook.setPageNumber(pageNumber);
+                    foundBook.setQuantity(quantity);
+                    foundBook.setDescription(description);
 
                     foundBook.update();
-                    System.out.println("Debug: Cập nhật sách thành công."); // DEBUG
+
                     UIHelper.showAlert(AlertType.INFORMATION, "Cập nhật sách thành công!");
                 } else {
                     UIHelper.showAlert(AlertType.ERROR, "Sách không được tìm thấy.");
@@ -122,21 +123,25 @@ public class BookUpdateController {
             if (newBook != null) {
                 txtBookTitle.setText(selectedTitle);
                 txtAuthor.setText(newBook.getAuthor());
-                txtISBN.setText(newBook.getISBN());
                 txtYear.setText(String.valueOf(newBook.getYear()));
                 txtPageNumber.setText(String.valueOf(newBook.getPageNumber()));
+                txtQuantity.setText(String.valueOf(newBook.getQuantity()));
+                txtDescription.setText(newBook.getDescription());
             } else {
                 System.out.println("Book not found.");
                 txtBookTitle.clear();
                 txtAuthor.clear();
-                txtISBN.clear();
                 txtYear.clear();
                 txtPageNumber.clear();
+                txtQuantity.clear();
+                txtDescription.clear();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
 
     @FXML
     private void actionBack(MouseEvent event) {

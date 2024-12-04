@@ -14,6 +14,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <ComboBox fx:id="cbBookTitle" layoutX="260.0" layoutY="64.0" onAction="#writeInfos" prefHeight="26.0" prefWidth="242.0" />
+      <Label layoutX="136.0" layoutY="71.0" text="Choose Book">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
       <Label layoutX="136.0" layoutY="104.0" text="Book Title:">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -24,36 +30,36 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="136.0" layoutY="170.0" text="Book ISBN:">
+      <Label layoutX="136.0" layoutY="173.0" text="Book Year:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="136.0" layoutY="203.0" text="Book Year">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="137.0" layoutY="236.0" prefHeight="20.0" prefWidth="118.0" text="Number Of Page">
+      <Label layoutX="137.0" layoutY="206.0" prefHeight="20.0" prefWidth="118.0" text="Number Of Pages:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAuthor" layoutX="260.0" layoutY="132.0" prefHeight="26.0" prefWidth="242.0" />
-      <TextField fx:id="txtISBN" layoutX="260.0" layoutY="166.0" prefHeight="26.0" prefWidth="242.0" />
-      <TextField fx:id="txtYear" layoutX="260.0" layoutY="200.0" prefHeight="26.0" prefWidth="242.0" />
-      <TextField fx:id="txtPageNumber" layoutX="260.0" layoutY="234.0" prefHeight="26.0" prefWidth="242.0" />
-      <ComboBox fx:id="cbBookTitle" layoutX="260.0" layoutY="64.0" onAction="#writeInfos" prefHeight="26.0" prefWidth="242.0" />
-      <Button fx:id="btnUpdate" layoutX="257.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#actionBookUpdate" prefHeight="30.0" prefWidth="96.0" text="UPDATE">
+      <Label layoutX="136.0" layoutY="239.0" text="Description:">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
-      </Button>
-      <Label layoutX="136.0" layoutY="71.0" text="Choose Book">
+      </Label>
+      <Label layoutX="136.0" layoutY="276.0" text="Quantity">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="txtBookTitle" layoutX="260.0" layoutY="97.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txtAuthor" layoutX="260.0" layoutY="132.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txtYear" layoutX="260.0" layoutY="170.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txtPageNumber" layoutX="260.0" layoutY="204.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txtDescription" layoutX="260.0" layoutY="236.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txtQuantity" layoutX="260.0" layoutY="273.0" prefHeight="26.0" prefWidth="242.0" />
+      <Button fx:id="btnUpdate" layoutX="252.0" layoutY="344.0" mnemonicParsing="false" onMouseClicked="#actionBookUpdate" prefHeight="30.0" prefWidth="96.0" text="UPDATE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

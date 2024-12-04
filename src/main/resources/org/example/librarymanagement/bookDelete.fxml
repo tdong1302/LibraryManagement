@@ -34,7 +34,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="144.0" layoutY="193.0" prefHeight="20.0" prefWidth="118.0" text="Number Of Page">
+      <Label layoutX="144.0" layoutY="193.0" prefHeight="20.0" prefWidth="118.0" text="Book Quantity">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -42,7 +42,7 @@
       <TextField fx:id="txtAuthor" layoutX="267.0" layoutY="89.0" prefHeight="26.0" prefWidth="242.0" />
       <TextField fx:id="txtISBN" layoutX="267.0" layoutY="123.0" prefHeight="26.0" prefWidth="242.0" />
       <TextField fx:id="txtYear" layoutX="267.0" layoutY="157.0" prefHeight="26.0" prefWidth="242.0" />
-      <TextField fx:id="txtPageNumber" layoutX="267.0" layoutY="191.0" prefHeight="26.0" prefWidth="242.0" />
+      <TextField fx:id="txtQuantity" layoutX="267.0" layoutY="191.0" prefHeight="26.0" prefWidth="242.0" />
       <ComboBox fx:id="cbBookTitle" layoutX="267.0" layoutY="54.0" onAction="#writeInfos" prefHeight="26.0" prefWidth="242.0" />
       <Button fx:id="btnDelete" layoutX="247.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#actionBookDelete" prefHeight="30.0" prefWidth="96.0" text="DELETE">
          <font>

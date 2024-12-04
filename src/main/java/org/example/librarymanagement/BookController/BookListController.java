@@ -28,7 +28,6 @@ public class BookListController implements Initializable {
     @FXML
     private TableColumn<Book, String> bookTitleColumn;
 
-
     @FXML
     private TableColumn<Book, String> bookAuthorColumn;
 
@@ -40,6 +39,15 @@ public class BookListController implements Initializable {
 
     @FXML
     private TableColumn<Book, Integer> bookPageNumberColumn;
+
+    @FXML
+    private TableColumn<Book, Boolean> bookIsBorrowedColumn;
+
+    @FXML
+    private TableColumn<Book, Integer> bookQuantityColumn;
+
+    @FXML
+    private TableColumn<Book, String> bookDescriptionColumn;
 
     private ObservableList<Book> bookList = FXCollections.observableArrayList();
 
@@ -55,11 +63,15 @@ public class BookListController implements Initializable {
         bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         bookYearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         bookPageNumberColumn.setCellValueFactory(new PropertyValueFactory<>("pageNumber"));
+
+        bookIsBorrowedColumn.setCellValueFactory(new PropertyValueFactory<>("isBorrowed"));
+        bookQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        bookDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
     }
 
     private void loadBookData() {
         try {
-            ObservableList<Book> books = Book.getAllBooks();
+            ObservableList<Book> books = Book.getAllBooks();  // Adjust to include new properties
             setBookList(books);
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,7 +95,6 @@ public class BookListController implements Initializable {
 
         bookTableView.setItems(filteredList);
     }
-
 
     public void setBookList(ObservableList<Book> books) {
         bookList.setAll(books);

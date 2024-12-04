@@ -18,11 +18,14 @@
         </Label>
       <TableView fx:id="bookTableView" layoutX="13.0" layoutY="77.0" prefHeight="432.0" prefWidth="681.0">
          <columns>
-            <TableColumn fx:id="bookISBNColumn" prefWidth="162.3999695777893" text="ISBN" />
-            <TableColumn fx:id="bookTitleColumn" prefWidth="68.0" text="Title" />
-            <TableColumn fx:id="bookAuthorColumn" prefWidth="121.60003662109375" text="Author" />
-            <TableColumn fx:id="bookYearColumn" prefWidth="93.5999755859375" text="Year" />
-            <TableColumn fx:id="bookPageNumberColumn" prefWidth="242.39993286132812" text="PageNumber" />
+            <TableColumn fx:id="bookISBNColumn" prefWidth="63.199978828430176" text="ISBN" />
+            <TableColumn fx:id="bookTitleColumn" prefWidth="60.0" text="Title" />
+            <TableColumn fx:id="bookAuthorColumn" prefWidth="105.60003662109375" text="Author" />
+            <TableColumn fx:id="bookYearColumn" prefWidth="56.80000305175781" text="Year" />
+            <TableColumn fx:id="bookPageNumberColumn" prefWidth="70.4000244140625" text="PageNumber" />
+             <TableColumn fx:id="bookIsBorrowedColumn" prefWidth="88.79998779296875" text="Is Borrowed" />
+             <TableColumn fx:id="bookQuantityColumn" prefWidth="90.4000244140625" text="Quantity" />
+             <TableColumn fx:id="bookDescriptionColumn" prefWidth="106.4000244140625" text="Description" />
          </columns>
       </TableView>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#actionBack" prefHeight="30.0" prefWidth="66.0" text="BACK">

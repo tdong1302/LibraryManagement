@@ -17,15 +17,14 @@ public class BookDeleteController {
     @FXML
     private ComboBox<String> cbBookTitle;
     @FXML
-    private TextField txtBookTitle;
-    @FXML
     private TextField txtAuthor;
     @FXML
     private TextField txtISBN;
     @FXML
     private TextField txtYear;
     @FXML
-    private TextField txtPageNumber;
+    private TextField txtQuantity;
+
 
     @FXML
     private Button btnDelete;
@@ -95,13 +94,13 @@ public class BookDeleteController {
                 txtAuthor.setText(newBook.getAuthor());
                 txtISBN.setText(newBook.getISBN());
                 txtYear.setText(String.valueOf(newBook.getYear()));
-                txtPageNumber.setText(String.valueOf(newBook.getPageNumber()));
+                txtQuantity.setText(String.valueOf(newBook.getQuantity()));
             } else {
                 System.out.println("Book not found.");
                 txtAuthor.clear();
                 txtISBN.clear();
                 txtYear.clear();
-                txtPageNumber.clear();
+                txtQuantity.clear();
             }
         } catch (Exception e) {
             e.printStackTrace();

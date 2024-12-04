@@ -26,6 +26,13 @@ public class BookAddController {
     private TextField txtPageNumber;
 
     @FXML
+    private TextField txtDescription;
+
+    @FXML
+    private TextField txtQuantity;
+
+
+    @FXML
     private Button btnAdd;
 
     @FXML
@@ -39,10 +46,13 @@ public class BookAddController {
             String ISBN = txtISBN.getText();
             int year = Integer.parseInt(txtYear.getText());
             int pageNumber = Integer.parseInt(txtPageNumber.getText());
+            String description = txtDescription.getText();
+            int quantity = Integer.parseInt(txtQuantity.getText());
+            boolean isBorrowed = false; // Đặt mặc định là 0 khi thêm sách (chưa mượn)
 
-            Book newBook = new Book(author, ISBN, title, year, pageNumber);
+            Book newBook = new Book(author, ISBN, title, year, pageNumber, isBorrowed, quantity, description);
             newBook.create();
-            UIHelper.showAlert(Alert.AlertType.INFORMATION,"The book has been added successfully.");
+            UIHelper.showAlert(Alert.AlertType.INFORMATION, "The book has been added successfully.");
 
         } catch (NumberFormatException e) {
             e.printStackTrace();

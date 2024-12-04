@@ -12,6 +12,11 @@
     <children>
         <TabPane prefHeight="544.0" prefWidth="704.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
+            <Tab text="Trang chủ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
                 <Tab text="Quản Lý Sách">
                     <content>
                         <AnchorPane prefHeight="413.0" prefWidth="442.0">
