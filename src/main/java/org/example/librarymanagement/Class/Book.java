@@ -9,30 +9,19 @@ public class Book implements Manage {
     public String title;
     public int year;
     public int pageNumber;
-<<<<<<< Updated upstream
     private int quantity;
     private String description;
-=======
-    public String description;
->>>>>>> Stashed changes
 
     public Book() {
     }
 
-<<<<<<< Updated upstream
     public Book(String author, String ISBN, String title, int year, int pageNumber, int quantity, String description) {
-=======
-    public Book(String author, String ISBN, String title, int year, int pageNumber, String description) {
->>>>>>> Stashed changes
         this.author = author;
         this.ISBN = ISBN;
         this.title = title;
         this.year = year;
         this.pageNumber = pageNumber;
-<<<<<<< Updated upstream
         this.quantity = quantity;
-=======
->>>>>>> Stashed changes
         this.description = description;
     }
 
@@ -100,7 +89,6 @@ public class Book implements Manage {
         this.pageNumber = pageNumber;
     }
 
-<<<<<<< Updated upstream
     public int getQuantity() {
         return quantity;
     }
@@ -109,8 +97,6 @@ public class Book implements Manage {
         this.quantity = quantity;
     }
 
-=======
->>>>>>> Stashed changes
     public String getDescription() {
         return description;
     }

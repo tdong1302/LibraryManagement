@@ -9,14 +9,6 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 
 public class DatabaseConnection {
-<<<<<<< Updated upstream
-        private static final String URL = "jdbc:mysql://localhost:3306/library_copy";
-        private static final String USER = "root";
-        private static final String PASSWORD = "trandong1302";
-    
-        public static Connection getConnection() throws SQLException {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-=======
     private static final String URL = "jdbc:mysql://localhost:3307/library_copy";
     private static final String USER = "root";
     private static final String PASSWORD = "0001";
@@ -26,23 +18,8 @@ public class DatabaseConnection {
     }
 
     public static void createBook(Book book) {
-        String sql = "INSERT INTO books (ISBN, author, title, year, pageNumber) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO books (ISBN, author, title, year, pageNumber, quantity, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, book.getISBN());
-            stmt.setString(2, book.getAuthor());
-            stmt.setString(3, book.getTitle());
-            stmt.setInt(4, book.getYear());
-            stmt.setInt(5, book.getPageNumber());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
->>>>>>> Stashed changes
-        }
-
-<<<<<<< Updated upstream
-        public static void createBook(Book book) {
-            String sql = "INSERT INTO books (ISBN, author, title, year, pageNumber, quantity, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, book.getISBN());
                 stmt.setString(2, book.getAuthor());
                 stmt.setString(3, book.getTitle());
@@ -53,22 +30,6 @@ public class DatabaseConnection {
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
-=======
-    public static Book findBookByTitle(String title) {
-        String sql = "SELECT * FROM books WHERE title = ?";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, title);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return new Book(
-                        rs.getString("author"),
-                        rs.getString("ISBN"),
-                        rs.getString("title"),
-                        rs.getInt("year"),
-                        rs.getInt("pageNumber"),
-                        rs.getString("description")
-                );
->>>>>>> Stashed changes
             }
         }
 
@@ -116,10 +77,6 @@ public class DatabaseConnection {
             }
         }
 
-<<<<<<< Updated upstream
-
-
-
         public static void deleteBookByTitle(String title) {
             String sql = "DELETE FROM books WHERE title = ?";
             try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -127,21 +84,6 @@ public class DatabaseConnection {
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
-=======
-    public static ObservableList<Book> getAllBooks() {
-        ObservableList<Book> books = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM books";
-        try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                books.add(new Book(
-                        rs.getString("ISBN"),
-                        rs.getString("author"),
-                        rs.getString("title"),
-                        rs.getInt("year"),
-                        rs.getInt("pageNumber"),
-                        rs.getString("description")
-                ));
->>>>>>> Stashed changes
             }
         }
 
