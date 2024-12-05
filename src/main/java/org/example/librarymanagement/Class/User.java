@@ -3,7 +3,7 @@ package org.example.librarymanagement.Class;
 import javafx.collections.ObservableList;
 import org.example.librarymanagement.DatabaseConnection;
 
-public class User implements Manage{
+public class User implements Manage {
     public static int nums = 0;
     private final int ID;
     private String fullName;

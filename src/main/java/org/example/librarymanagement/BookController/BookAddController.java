@@ -26,6 +26,7 @@ public class BookAddController {
     private TextField txtPageNumber;
 
     @FXML
+<<<<<<< Updated upstream
     private TextField txtDescription;
 
     @FXML
@@ -33,6 +34,12 @@ public class BookAddController {
 
 
     @FXML
+=======
+
+    private TextField txtDescription;
+
+    @FXML
+>>>>>>> Stashed changes
     private Button btnAdd;
 
     @FXML
@@ -47,9 +54,14 @@ public class BookAddController {
             int year = Integer.parseInt(txtYear.getText());
             int pageNumber = Integer.parseInt(txtPageNumber.getText());
             String description = txtDescription.getText();
+<<<<<<< Updated upstream
             int quantity = Integer.parseInt(txtQuantity.getText());
 
             Book newBook = new Book(author, ISBN, title, year, pageNumber, quantity, description);
+=======
+
+            Book newBook = new Book(author, ISBN, title, year, pageNumber, description);
+>>>>>>> Stashed changes
             newBook.create();
             UIHelper.showAlert(Alert.AlertType.INFORMATION, "The book has been added successfully.");
 

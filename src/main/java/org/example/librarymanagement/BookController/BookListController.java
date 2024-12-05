@@ -40,12 +40,17 @@ public class BookListController implements Initializable {
     @FXML
     private TableColumn<Book, Integer> bookPageNumberColumn;
 
+<<<<<<< Updated upstream
 
     @FXML
     private TableColumn<Book, Integer> bookQuantityColumn;
 
     @FXML
     private TableColumn<Book, String> bookDescriptionColumn;
+=======
+    @FXML
+    public TableColumn<Book, String> bookDescriptionColumn;
+>>>>>>> Stashed changes
 
     private ObservableList<Book> bookList = FXCollections.observableArrayList();
 
@@ -61,9 +66,12 @@ public class BookListController implements Initializable {
         bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         bookYearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         bookPageNumberColumn.setCellValueFactory(new PropertyValueFactory<>("pageNumber"));
+<<<<<<< Updated upstream
 
 
         bookQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+=======
+>>>>>>> Stashed changes
         bookDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
     }
 
