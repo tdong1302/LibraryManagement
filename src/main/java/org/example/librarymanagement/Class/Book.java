@@ -9,20 +9,18 @@ public class Book implements Manage{
     public String title;
     public int year;
     public int pageNumber;
-    private Boolean isBorrowed;
     private int quantity;
     private String description;
 
     public Book() {
     }
 
-    public Book(String author, String ISBN, String title, int year, int pageNumber, Boolean isBorrowed, int quantity, String description) {
+    public Book(String author, String ISBN, String title, int year, int pageNumber, int quantity, String description) {
         this.author = author;
         this.ISBN = ISBN;
         this.title = title;
         this.year = year;
         this.pageNumber = pageNumber;
-        this.isBorrowed = isBorrowed;
         this.quantity = quantity;
         this.description = description;
     }
@@ -89,15 +87,6 @@ public class Book implements Manage{
 
     public void setPageNumber(int pageNumber) {
         this.pageNumber = pageNumber;
-    }
-
-    public Boolean getIsBorrowed() {
-        return isBorrowed;
-    }
-
-
-    public void setIsBorrowed(Boolean borrowed) {
-        isBorrowed = borrowed;
     }
 
     public int getQuantity() {

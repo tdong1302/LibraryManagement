@@ -18,16 +18,15 @@ public class DatabaseConnection {
         }
 
         public static void createBook(Book book) {
-            String sql = "INSERT INTO books (ISBN, author, title, year, pageNumber, isBorrowed, quantity, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO books (ISBN, author, title, year, pageNumber, quantity, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
             try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, book.getISBN());
                 stmt.setString(2, book.getAuthor());
                 stmt.setString(3, book.getTitle());
                 stmt.setInt(4, book.getYear());
                 stmt.setInt(5, book.getPageNumber());
-                stmt.setBoolean(6, book.getIsBorrowed());
-                stmt.setInt(7, book.getQuantity());
-                stmt.setString(8, book.getDescription());
+                stmt.setInt(6, book.getQuantity());
+                stmt.setString(7, book.getDescription());
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -46,7 +45,6 @@ public class DatabaseConnection {
                             rs.getString("title"),
                             rs.getInt("year"),
                             rs.getInt("pageNumber"),
-                            rs.getBoolean("isBorrowed"),
                             rs.getInt("quantity"),
                             rs.getString("description")
                     );
@@ -66,10 +64,7 @@ public class DatabaseConnection {
                 stmt.setInt(4, book.getPageNumber());
                 stmt.setInt(5, book.getQuantity());
                 stmt.setString(6, book.getDescription());
-                stmt.setString(7, book.getISBN());  // Đảm bảo không thay đổi ISBN trong cơ sở dữ liệu
-
-                // Debug: In câu lệnh SQL ra để kiểm tra
-                System.out.println("Debug: " + stmt.toString());
+                stmt.setString(7, book.getISBN());
 
                 int rowsAffected = stmt.executeUpdate();
                 if (rowsAffected > 0) {
@@ -106,7 +101,6 @@ public class DatabaseConnection {
                             rs.getString("title"),
                             rs.getInt("year"),
                             rs.getInt("pageNumber"),
-                            rs.getBoolean("isBorrowed"),
                             rs.getInt("quantity"),
                             rs.getString("description")
                     ));

@@ -22,10 +22,9 @@
             <TableColumn fx:id="bookTitleColumn" prefWidth="60.0" text="Title" />
             <TableColumn fx:id="bookAuthorColumn" prefWidth="105.60003662109375" text="Author" />
             <TableColumn fx:id="bookYearColumn" prefWidth="56.80000305175781" text="Year" />
-            <TableColumn fx:id="bookPageNumberColumn" prefWidth="70.4000244140625" text="PageNumber" />
-             <TableColumn fx:id="bookIsBorrowedColumn" prefWidth="88.79998779296875" text="Is Borrowed" />
-             <TableColumn fx:id="bookQuantityColumn" prefWidth="90.4000244140625" text="Quantity" />
-             <TableColumn fx:id="bookDescriptionColumn" prefWidth="106.4000244140625" text="Description" />
+            <TableColumn fx:id="bookPageNumberColumn" prefWidth="102.39996337890625" text="PageNumber" />
+             <TableColumn fx:id="bookQuantityColumn" prefWidth="103.2000732421875" text="Quantity" />
+             <TableColumn fx:id="bookDescriptionColumn" prefWidth="175.99993896484375" text="Description" />
          </columns>
       </TableView>
       <Button fx:id="btnBack" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#actionBack" prefHeight="30.0" prefWidth="66.0" text="BACK">

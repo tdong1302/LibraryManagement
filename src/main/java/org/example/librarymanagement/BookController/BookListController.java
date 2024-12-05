@@ -40,8 +40,6 @@ public class BookListController implements Initializable {
     @FXML
     private TableColumn<Book, Integer> bookPageNumberColumn;
 
-    @FXML
-    private TableColumn<Book, Boolean> bookIsBorrowedColumn;
 
     @FXML
     private TableColumn<Book, Integer> bookQuantityColumn;
@@ -64,7 +62,7 @@ public class BookListController implements Initializable {
         bookYearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         bookPageNumberColumn.setCellValueFactory(new PropertyValueFactory<>("pageNumber"));
 
-        bookIsBorrowedColumn.setCellValueFactory(new PropertyValueFactory<>("isBorrowed"));
+
         bookQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         bookDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
     }

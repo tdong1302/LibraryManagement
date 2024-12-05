@@ -48,9 +48,8 @@ public class BookAddController {
             int pageNumber = Integer.parseInt(txtPageNumber.getText());
             String description = txtDescription.getText();
             int quantity = Integer.parseInt(txtQuantity.getText());
-            boolean isBorrowed = false; // Đặt mặc định là 0 khi thêm sách (chưa mượn)
 
-            Book newBook = new Book(author, ISBN, title, year, pageNumber, isBorrowed, quantity, description);
+            Book newBook = new Book(author, ISBN, title, year, pageNumber, quantity, description);
             newBook.create();
             UIHelper.showAlert(Alert.AlertType.INFORMATION, "The book has been added successfully.");
 

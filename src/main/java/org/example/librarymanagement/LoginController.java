@@ -43,8 +43,10 @@ public class LoginController {
                     UIHelper.openWindow("admin", "Library Management System - Admin");
                     Stage currentStage = (Stage) emailField.getScene().getWindow();
                     currentStage.close();
-                } else {
-                    UIHelper.showAlert(Alert.AlertType.ERROR, "Tài khoản không hợp lệ.");
+                }  else {
+                    UIHelper.openWindow("user", "Library Management System - User");
+                    Stage currentStage = (Stage) emailField.getScene().getWindow();
+                    currentStage.close();
                 }
             } catch (Exception e) {
                 e.printStackTrace();

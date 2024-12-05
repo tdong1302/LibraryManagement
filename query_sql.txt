@@ -1,0 +1,24 @@
+CREATE SCHEMA library_copy;
+
+USE library_copy;
+
+CREATE TABLE Books (
+    ISBN VARCHAR(20) PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Author VARCHAR(255) NOT NULL,
+    Year INT NOT NULL,
+    PageNumber INT NOT NULL,
+    quantity INT NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE Users (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    FullName VARCHAR(255) NOT NULL,
+    Password VARCHAR(255) NOT NULL,
+    Address VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Phone VARCHAR(15) NOT NULL
+);
+INSERT INTO Users (FullName, Password, Address, Email, Phone)
+VALUES ('taikoanadmin', 'admin', 'diachi', 'admin', '039');
