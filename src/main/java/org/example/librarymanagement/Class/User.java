@@ -5,7 +5,7 @@ import org.example.librarymanagement.DatabaseConnection;
 
 import java.util.ArrayList;
 
-public class User implements Manage{
+public class User implements Manage {
     private int ID;
     private String fullName;
     private String password;
@@ -17,12 +17,21 @@ public class User implements Manage{
 
     public User() {
     }
+
     public User(String email, String password, String fullName, String address, String phone) {
         this.email = email;
         this.password = password;
         this.fullName = fullName;
         this.address = address;
         this.phone = phone;
+    }
+
+    public static ObservableList<User> getAllUsers() {
+        return DatabaseConnection.getAllUsers();
+    }
+
+    public static User checkUser(String email, String password) {
+        return DatabaseConnection.checkUser(email, password);
     }
 
     @Override
@@ -44,15 +53,6 @@ public class User implements Manage{
     public void delete() {
         DatabaseConnection.deleteUserByEmail(this.email);
     }
-
-    public static ObservableList<User> getAllUsers() {
-        return DatabaseConnection.getAllUsers();
-    }
-
-    public static User checkUser(String email, String password) {
-        return DatabaseConnection.checkUser(email, password);
-    }
-
 
     public String getFullName() {
         return fullName;
@@ -98,6 +98,10 @@ public class User implements Manage{
         return ID;
     }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
     public ArrayList<Rented_Book> getUserRentedBooks() {
         return user_rented_books;
     }
@@ -108,9 +112,5 @@ public class User implements Manage{
 
     public void returnRentedBook(Rented_Book rentedBook) {
         user_rented_books.remove(rentedBook);
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 }

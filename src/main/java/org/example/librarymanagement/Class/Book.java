@@ -3,12 +3,12 @@ package org.example.librarymanagement.Class;
 import javafx.collections.ObservableList;
 import org.example.librarymanagement.DatabaseConnection;
 
-public class Book implements Manage{
-    private String ISBN;
-    private String author;
+public class Book implements Manage {
     public String title;
     public int year;
     public int pageNumber;
+    private String ISBN;
+    private String author;
     private int quantity;
     private String description;
 
@@ -25,9 +25,14 @@ public class Book implements Manage{
         this.description = description;
     }
 
+    public static ObservableList<Book> getAllBooks() {
+        return DatabaseConnection.getAllBooks();
+    }
+
     @Override
     public void create() {
-        DatabaseConnection.createBook(this);;
+        DatabaseConnection.createBook(this);
+        ;
     }
 
     @Override
@@ -43,10 +48,6 @@ public class Book implements Manage{
     @Override
     public void delete() {
         DatabaseConnection.deleteBookByTitle(this.title);
-    }
-
-    public static ObservableList<Book> getAllBooks() {
-        return DatabaseConnection.getAllBooks();
     }
 
     public String getAuthor() {

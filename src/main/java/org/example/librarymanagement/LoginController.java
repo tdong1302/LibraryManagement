@@ -1,23 +1,25 @@
 package org.example.librarymanagement;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.example.librarymanagement.Class.User;
 
 public class LoginController {
 
+    private static User currentUser;
     @FXML
     private TextField emailField;
-
     @FXML
     private PasswordField passwordField;
 
-    private static User currentUser;
+    public static User getCurrentUser() {
+        return currentUser;
+    }
 
     @FXML
     private void initialize() {
@@ -47,7 +49,7 @@ public class LoginController {
                     UIHelper.openWindow("admin", "Library Management System - Admin");
                     Stage currentStage = (Stage) emailField.getScene().getWindow();
                     currentStage.close();
-                }  else {
+                } else {
                     UIHelper.openWindow("user", "Library Management System - User");
                     Stage currentStage = (Stage) emailField.getScene().getWindow();
                     currentStage.close();
@@ -63,13 +65,6 @@ public class LoginController {
     @FXML
     private void handleRegister() {
         UIHelper.openWindow("register", "Register");
-    }
-
-    public static User getCurrentUser() {
-        return currentUser;
-    }
-    public static boolean isUserLoggedIn() {
-        return currentUser != null;
     }
 
 }

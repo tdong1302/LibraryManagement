@@ -79,8 +79,6 @@ public class DatabaseConnection {
     }
 
 
-
-
     public static void deleteBookByTitle(String title) {
         String sql = "DELETE FROM books WHERE title = ?";
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -145,7 +143,6 @@ public class DatabaseConnection {
         }
         return null;
     }
-
 
 
     public static void updateUser(User user) {
@@ -272,20 +269,21 @@ public class DatabaseConnection {
         }
     }
 
-
     public static ObservableList<Rented_Book> getAllRentedBooks() {
         ObservableList<Rented_Book> rentedBooks = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM book_lent";
+        String sql = "SELECT ID, ISBN, userID, borrowDate, returnDate FROM book_lent";
 
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                int ID = rs.getInt("ID");
                 String ISBN = rs.getString("ISBN");
                 int userID = rs.getInt("userID");
                 LocalDate borrowDate = rs.getDate("borrowDate").toLocalDate();
                 LocalDate returnDate = rs.getDate("returnDate") != null ? rs.getDate("returnDate").toLocalDate() : null;
 
-                rentedBooks.add(new Rented_Book(ID, ISBN, userID, borrowDate, returnDate));
+                Rented_Book rentedBook = new Rented_Book(ISBN, userID, borrowDate, returnDate);
+                rentedBook.setID(rs.getInt("ID"));
+
+                rentedBooks.add(rentedBook);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -295,7 +293,7 @@ public class DatabaseConnection {
     }
 
     public static ObservableList<Rented_Book> getRentedBooksByUser(int userId) {
-        String selectSQL = "SELECT * FROM book_lent WHERE userID = ?";
+        String selectSQL = "SELECT ID, ISBN, userID, borrowDate, returnDate FROM book_lent WHERE userID = ?";
         ObservableList<Rented_Book> rentedBooks = FXCollections.observableArrayList();
 
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
@@ -303,18 +301,22 @@ public class DatabaseConnection {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                rentedBooks.add(new Rented_Book(
-                        rs.getInt("ID"),
-                        rs.getString("ISBN"),
-                        rs.getInt("userID"),
-                        rs.getDate("borrowDate").toLocalDate(),
-                        rs.getDate("returnDate").toLocalDate()
-                ));
+                String ISBN = rs.getString("ISBN");
+                int userID = rs.getInt("userID");
+                LocalDate borrowDate = rs.getDate("borrowDate").toLocalDate();
+                LocalDate returnDate = rs.getDate("returnDate") != null ? rs.getDate("returnDate").toLocalDate() : null;
+
+                Rented_Book rentedBook = new Rented_Book(ISBN, userID, borrowDate, returnDate);
+                rentedBook.setID(rs.getInt("ID"));
+
+                rentedBooks.add(rentedBook);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return rentedBooks;
     }
+
 
 }

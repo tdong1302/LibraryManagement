@@ -10,11 +10,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import org.example.librarymanagement.Class.Book;
+import org.example.librarymanagement.Class.Rented_Book;
 import org.example.librarymanagement.Class.User;
 import org.example.librarymanagement.LoginController;
 import org.example.librarymanagement.UIHelper;
 
-import org.example.librarymanagement.Class.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -161,9 +161,7 @@ public class UserController implements Initializable {
             return;
         }
 
-        int rentedBookID = generateRentedBookID();
         Rented_Book rentedBook = new Rented_Book(
-                rentedBookID,
                 selectedBook.getISBN(),
                 currentUser.getID(),
                 LocalDate.now(),
@@ -202,10 +200,6 @@ public class UserController implements Initializable {
         } else {
             UIHelper.showAlert(Alert.AlertType.ERROR, "Trả sách thất bại. Vui lòng thử lại.");
         }
-    }
-
-    private int generateRentedBookID() {
-        return (int) (Math.random() * 1000);
     }
 
     @FXML

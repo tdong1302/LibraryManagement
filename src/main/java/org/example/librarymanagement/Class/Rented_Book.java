@@ -12,32 +12,11 @@ public class Rented_Book {
     private LocalDate borrowDate;
     private LocalDate returnDate;
 
-    public Rented_Book(int ID, String ISBN, int userID, LocalDate borrowDate, LocalDate returnDate) {
-        this.ID = ID;
+    public Rented_Book(String ISBN, int userID, LocalDate borrowDate, LocalDate returnDate) {
         this.ISBN = ISBN;
         this.userID = userID;
         this.borrowDate = borrowDate;
         this.returnDate = returnDate;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public String getISBN() {
-        return ISBN;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public LocalDate getBorrowDate() {
-        return borrowDate;
-    }
-
-    public LocalDate getReturnDate() {
-        return returnDate;
     }
 
     public static boolean rentBook(String ISBN, int userID, LocalDate returnDate) {
@@ -54,5 +33,29 @@ public class Rented_Book {
 
     public static ObservableList<Rented_Book> getRentedBooksByUser(int userId) {
         return DatabaseConnection.getRentedBooksByUser(userId);
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public LocalDate getBorrowDate() {
+        return borrowDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
     }
 }

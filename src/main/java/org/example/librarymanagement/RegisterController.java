@@ -10,12 +10,18 @@ import org.example.librarymanagement.Class.User;
 
 public class RegisterController {
 
-    @FXML private TextField registerEmailField;
-    @FXML private TextField registerFullNameField;
-    @FXML private TextField registerPasswordField;
-    @FXML private TextField registerPhoneField;
-    @FXML private TextField registerAddressField;
-    @FXML private Button exit;
+    @FXML
+    private TextField registerEmailField;
+    @FXML
+    private TextField registerFullNameField;
+    @FXML
+    private TextField registerPasswordField;
+    @FXML
+    private TextField registerPhoneField;
+    @FXML
+    private TextField registerAddressField;
+    @FXML
+    private Button exit;
 
     @FXML
     private void handleRegister() {
@@ -30,7 +36,7 @@ public class RegisterController {
             return;
         }
 
-        User newUser = new User(email,password, fullName, address, phone);
+        User newUser = new User(email, password, fullName, address, phone);
         newUser.create();
 
         UIHelper.showAlert(AlertType.INFORMATION, "Đăng ký thành công!");

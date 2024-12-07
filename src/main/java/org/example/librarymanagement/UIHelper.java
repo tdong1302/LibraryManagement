@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ public class UIHelper {
 
     /**
      * Mở cửa sổ mới và đóng cửa sổ hiện tại , dùng event chuột.
-      */
+     */
     public static void openWindowAndClose(MouseEvent event, String windowName, String windowTitle) {
         try {
             Parent root = FXMLLoader.load(UIHelper.class.getResource("/org/example/librarymanagement/" + windowName + ".fxml"));
@@ -31,7 +31,7 @@ public class UIHelper {
             newStage.setTitle(windowTitle);
             newStage.setScene(new Scene(root));
 
-            if("login".equals(windowName) || "register".equals(windowName)) {
+            if ("login".equals(windowName) || "register".equals(windowName)) {
                 newStage.setWidth(600);
                 newStage.setHeight(400);
             }
