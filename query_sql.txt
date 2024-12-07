@@ -20,5 +20,14 @@ CREATE TABLE Users (
     Email VARCHAR(255) NOT NULL,
     Phone VARCHAR(15) NOT NULL
 );
+CREATE TABLE book_lent (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN VARCHAR(20) NOT NULL,
+    userID INT NOT NULL,
+    borrowDate DATE NOT NULL,
+    returnDate DATE,
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN),
+    FOREIGN KEY (userID) REFERENCES Users(ID)
+);
 INSERT INTO Users (FullName, Password, Address, Email, Phone)
 VALUES ('taikoanadmin', 'admin', 'diachi', 'admin', '039');
