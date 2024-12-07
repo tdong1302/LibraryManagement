@@ -52,6 +52,6 @@ public class MenuController {
 
     @FXML
     private void exitMenu(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "login", "Exit");
+        UIHelper.openWindowAndClose(event, "admin", "Exit");
     }
 }

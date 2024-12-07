@@ -34,20 +34,20 @@ public class BookDeleteController {
     @FXML
     private void initialize() {
         try {
-            // Retrieve all books
             List<Book> books = Book.getAllBooks();
 
-            // Add book titles to the ComboBox
             ObservableList<String> bookTitles = FXCollections.observableArrayList();
             for (Book book : books) {
                 bookTitles.add(book.getTitle());
             }
-
-            // Set items for the ComboBox
             cbBookTitle.setItems(bookTitles);
+            txtAuthor.setEditable(false);
+            txtISBN.setEditable(false);
+            txtYear.setEditable(false);
+            txtQuantity.setEditable(false);
         } catch (Exception e) {
             e.printStackTrace();
-            UIHelper.showAlert(Alert.AlertType.INFORMATION, "An error occurred while retrieving the book list.");
+            UIHelper.showAlert(Alert.AlertType.INFORMATION, "Lỗi init book");
         }
     }
 
@@ -61,17 +61,15 @@ public class BookDeleteController {
                 Book newBook = book.read();
                 if (newBook != null) {
                     newBook.delete();
-                    UIHelper.showAlert(Alert.AlertType.INFORMATION, "The book has been deleted successfully.");
+                    UIHelper.showAlert(Alert.AlertType.INFORMATION, "Sách đã được xoá thành công");
                     cbBookTitle.getItems().remove(selectedBookTitle);
-                } else {
-                    UIHelper.showAlert(Alert.AlertType.ERROR, "Book not found.");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                UIHelper.showAlert(Alert.AlertType.ERROR, "An error occurred while deleting the book: " + e.getMessage());
+                UIHelper.showAlert(Alert.AlertType.ERROR, "Sách không tồn tại, Vui lòng chọn lại sách " + e.getMessage());
             }
         } else {
-            UIHelper.showAlert(Alert.AlertType.ERROR, "Please select a book to delete.");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "Vui lòng chọn 1 sách để xoá");
         }
     }
 
@@ -109,7 +107,7 @@ public class BookDeleteController {
 
     @FXML
     private void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event,"admin", "back to main");
+        UIHelper.openWindowAndClose(event,"admin_book", "back to main");
     }
 
 }

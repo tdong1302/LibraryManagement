@@ -17,6 +17,8 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    private static User currentUser;
+
     @FXML
     private void initialize() {
         emailField.setOnKeyPressed(this::handleEnterKey);
@@ -37,6 +39,8 @@ public class LoginController {
         User user = User.checkUser(email, password);
 
         if (user != null) {
+            currentUser = user;
+
             try {
                 String user_email = user.getEmail();
                 if ("admin".equals(user_email)) {
@@ -59,6 +63,13 @@ public class LoginController {
     @FXML
     private void handleRegister() {
         UIHelper.openWindow("register", "Register");
+    }
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+    public static boolean isUserLoggedIn() {
+        return currentUser != null;
     }
 
 }

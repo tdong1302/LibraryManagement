@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.librarymanagement.UserController.UserListController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.librarymanagement.UserController.UserListController">
     <children>
         <TextField fx:id="txtSearchUser" layoutX="247.0" layoutY="26.0" onKeyPressed="#actionSearchUser" prefHeight="26.0" prefWidth="238.0" />
         <Label layoutX="197.0" layoutY="26.0" prefHeight="26.0" prefWidth="50.0" text="Search">
@@ -18,11 +18,12 @@
         </Label>
         <TableView fx:id="userTableView" layoutX="13.0" layoutY="77.0" prefHeight="432.0" prefWidth="681.0">
             <columns>
+                <TableColumn fx:id="userIDColumn" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="userNameColumn" prefWidth="121.59994220733643" text="Name" />
                 <TableColumn fx:id="userPhoneColumn" prefWidth="108.800048828125" text="Phone" />
                 <TableColumn fx:id="userAddressColumn" prefWidth="121.60003662109375" text="Address" />
-                <TableColumn fx:id="userEmailColumn" prefWidth="156.0" text="Email" />
-                <TableColumn fx:id="userPasswordColumn" prefWidth="181.60003662109375" text="Password" />
+                <TableColumn fx:id="userEmailColumn" minWidth="0.0" prefWidth="136.800048828125" text="Email" />
+                <TableColumn fx:id="userPasswordColumn" prefWidth="116.79998779296875" text="Password" />
             </columns>
         </TableView>
         <Button fx:id="btnBack" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#actionBack" prefHeight="30.0" prefWidth="66.0" text="BACK">

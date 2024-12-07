@@ -35,20 +35,22 @@ public class UserDeleteController {
     @FXML
     private void initialize() {
         try {
-            // Retrieve all users
             List<User> users = User.getAllUsers();
 
-            // Add user names to the ComboBox
             ObservableList<String> userNames = FXCollections.observableArrayList();
             for (User user : users) {
                 userNames.add(user.getFullName());
             }
 
-            // Set items for the ComboBox
+            cbUserName.setItems(userNames);
+            txtUserName.setEditable(false);
+            txtUserEmail.setEditable(false);
+            txtUserPhone.setEditable(false);
+            txtUserAddress.setEditable(false);
             cbUserName.setItems(userNames);
         } catch (Exception e) {
             e.printStackTrace();
-            UIHelper.showAlert(Alert.AlertType.ERROR, "An error occurred while retrieving the user list.");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "lỗi init list user");
         }
     }
 
@@ -59,20 +61,18 @@ public class UserDeleteController {
             try {
                 User user = new User();
                 user.setFullName(selectedUserName);
-                User existingUser = user.read();  // Assuming there is a method `read()` to find a user.
+                User existingUser = user.read();
                 if (existingUser != null) {
-                    existingUser.delete();  // Assuming there is a delete method to remove the user.
-                    UIHelper.showAlert(Alert.AlertType.INFORMATION, "User has been successfully deleted.");
-                    cbUserName.getItems().remove(selectedUserName);  // Remove the deleted user from ComboBox
-                } else {
-                    UIHelper.showAlert(Alert.AlertType.ERROR, "User not found.");
+                    existingUser.delete();
+                    UIHelper.showAlert(Alert.AlertType.INFORMATION, "đã xoá người dùng thành công");
+                    cbUserName.getItems().remove(selectedUserName);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                UIHelper.showAlert(Alert.AlertType.ERROR, "An error occurred while deleting the user: " + e.getMessage());
+                UIHelper.showAlert(Alert.AlertType.ERROR, "k tìm thấy người dùng" + e.getMessage());
             }
         } else {
-            UIHelper.showAlert(Alert.AlertType.ERROR, "Please select a user to delete.");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "vui lòng chọn 1 người dùng để xoá");
         }
     }
 
@@ -80,27 +80,15 @@ public class UserDeleteController {
     private void writeInfos() {
         try {
             String selectedUserName = cbUserName.getValue();
-            if (selectedUserName == null || selectedUserName.isEmpty()) {
-                System.out.println("No user selected.");
-                return;
-            }
 
-            System.out.println("Selected User: " + selectedUserName);
-
-            // Fetch user from database based on full name
             User user = DatabaseConnection.findUserByFullName(selectedUserName);
 
             if (user != null) {
-                System.out.println("User found: " + user.getFullName());
-
-                // Display user details in text fields
                 txtUserName.setText(user.getFullName());
                 txtUserEmail.setText(user.getEmail());
                 txtUserPhone.setText(user.getPhone());
                 txtUserAddress.setText(user.getAddress());
             } else {
-                System.out.println("User not found.");
-                // Clear the fields if user not found
                 txtUserName.clear();
                 txtUserEmail.clear();
                 txtUserPhone.clear();
@@ -111,9 +99,8 @@ public class UserDeleteController {
         }
     }
 
-
     @FXML
     private void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin", "Back to main menu");
+        UIHelper.openWindowAndClose(event, "admin_user", "Back to main menu");
     }
 }

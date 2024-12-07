@@ -69,7 +69,7 @@ public class BookListController implements Initializable {
 
     private void loadBookData() {
         try {
-            ObservableList<Book> books = Book.getAllBooks();  // Adjust to include new properties
+            ObservableList<Book> books = Book.getAllBooks();
             setBookList(books);
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,6 +101,6 @@ public class BookListController implements Initializable {
 
     @FXML
     void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin", "back to admin");
+        UIHelper.openWindowAndClose(event, "admin_book", "back to admin");
     }
 }

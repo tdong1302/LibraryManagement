@@ -15,5 +15,7 @@ module org.example.librarymanagement {
     opens org.example.librarymanagement.BookController to javafx.fxml;
     exports org.example.librarymanagement.Class;
     opens org.example.librarymanagement.Class to javafx.fxml;
+    exports org.example.librarymanagement.MainController;
+    opens org.example.librarymanagement.MainController to javafx.fxml;
     //opens org.example.librarymanagement.api to javafx.fxml;
 }

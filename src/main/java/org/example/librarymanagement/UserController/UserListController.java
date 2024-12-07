@@ -40,6 +40,9 @@ public class UserListController implements Initializable {
     @FXML
     private TableColumn<User, String> userPasswordColumn;
 
+    @FXML
+    private TableColumn<User, Integer> userIDColumn;
+
     private ObservableList<User> userList = FXCollections.observableArrayList();
 
     @Override
@@ -49,6 +52,7 @@ public class UserListController implements Initializable {
     }
 
     private void initializeColumns() {
+        userIDColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         userEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         userPhoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
@@ -90,6 +94,6 @@ public class UserListController implements Initializable {
 
     @FXML
     void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin", "back to admin");
+        UIHelper.openWindowAndClose(event, "admin_user", "back to admin");
     }
 }

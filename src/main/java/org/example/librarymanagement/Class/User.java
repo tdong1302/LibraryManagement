@@ -3,19 +3,19 @@ package org.example.librarymanagement.Class;
 import javafx.collections.ObservableList;
 import org.example.librarymanagement.DatabaseConnection;
 
+import java.util.ArrayList;
+
 public class User implements Manage{
-    public static int nums = 0;
-    private final int ID;
+    private int ID;
     private String fullName;
     private String password;
     private String address;
     private String phone;
     private String email;
 
-    public User() {
-        nums++;
-        this.ID = nums;
+    private ArrayList<Rented_Book> user_rented_books = new ArrayList<>();
 
+    public User() {
     }
     public User(String email, String password, String fullName, String address, String phone) {
         this.email = email;
@@ -23,8 +23,6 @@ public class User implements Manage{
         this.fullName = fullName;
         this.address = address;
         this.phone = phone;
-        nums++;
-        this.ID = nums;
     }
 
     @Override
@@ -55,13 +53,6 @@ public class User implements Manage{
         return DatabaseConnection.checkUser(email, password);
     }
 
-    public static int getNums() {
-        return nums;
-    }
-
-    public static void setNums(int nums) {
-        User.nums = nums;
-    }
 
     public String getFullName() {
         return fullName;
@@ -101,5 +92,25 @@ public class User implements Manage{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public ArrayList<Rented_Book> getUserRentedBooks() {
+        return user_rented_books;
+    }
+
+    public void addRentedBook(Rented_Book rentedBook) {
+        user_rented_books.add(rentedBook);
+    }
+
+    public void returnRentedBook(Rented_Book rentedBook) {
+        user_rented_books.remove(rentedBook);
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

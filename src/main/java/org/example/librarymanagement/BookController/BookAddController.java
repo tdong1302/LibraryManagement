@@ -51,16 +51,16 @@ public class BookAddController {
 
             Book newBook = new Book(author, ISBN, title, year, pageNumber, quantity, description);
             newBook.create();
-            UIHelper.showAlert(Alert.AlertType.INFORMATION, "The book has been added successfully.");
+            UIHelper.showAlert(Alert.AlertType.INFORMATION, "Sách đã được thêm thành công");
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            UIHelper.showAlert(Alert.AlertType.ERROR, "Please check the entered data.");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "Lỗi thêm sách");
         }
     }
 
     @FXML
     void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin", "back to admin");
+        UIHelper.openWindowAndClose(event, "admin_book", "back to admin");
     }
 }

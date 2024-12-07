@@ -43,10 +43,8 @@ public class UserUpdateController {
     @FXML
     private void initialize() {
         try {
-            // Lấy danh sách tất cả người dùng
             List<User> users = User.getAllUsers();
 
-            // Thêm tên người dùng vào ComboBox
             ObservableList<String> userNames = FXCollections.observableArrayList();
             for (User user : users) {
                 userNames.add(user.getFullName());
@@ -62,14 +60,12 @@ public class UserUpdateController {
     @FXML
     private void actionUserUpdate(MouseEvent event) {
         String selectedUserName = cbUserName.getValue();
-        System.out.println("Debug: Tên người dùng được chọn để cập nhật: " + selectedUserName); // DEBUG
 
         if (selectedUserName != null) {
             try {
                 User user = new User();
                 user.setFullName(selectedUserName);
                 User foundUser = user.read();
-                System.out.println("Debug: Người dùng tìm thấy: " + (foundUser != null ? foundUser.getFullName() : "Không tìm thấy")); // DEBUG
 
                 if (foundUser != null) {
                     String name = txtUserName.getText();
@@ -78,11 +74,6 @@ public class UserUpdateController {
                     String address = txtUserAddress.getText();
                     String password = txtUserPassword.getText();
 
-                    System.out.println("Debug: Thông tin người dùng trước khi cập nhật: " +
-                            "Name=" + foundUser.getFullName() + ", Email=" + foundUser.getEmail() +
-                            ", Phone=" + foundUser.getPhone() + ", Address=" + foundUser.getAddress() +
-                            ", Password=" + foundUser.getPassword()); // DEBUG
-
                     foundUser.setFullName(name);
                     foundUser.setEmail(email);
                     foundUser.setPhone(phone);
@@ -90,7 +81,6 @@ public class UserUpdateController {
                     foundUser.setPassword(password);
 
                     foundUser.update();
-                    System.out.println("Debug: Cập nhật người dùng thành công."); // DEBUG
                     UIHelper.showAlert(AlertType.INFORMATION, "Cập nhật người dùng thành công!");
                 } else {
                     UIHelper.showAlert(AlertType.ERROR, "Người dùng không được tìm thấy.");
@@ -112,12 +102,9 @@ public class UserUpdateController {
                 System.out.println("No user name selected.");
                 return;
             }
-
-            // Lấy thông tin người dùng từ CSDL
             User user = new User();
             user.setFullName(selectedName);
             User newUser = user.read();
-            // Nếu tìm thấy, hiển thị thông tin
             if (newUser != null) {
                 txtUserName.setText(selectedName);
                 txtUserEmail.setText(newUser.getEmail());
@@ -139,6 +126,6 @@ public class UserUpdateController {
 
     @FXML
     private void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin", "Quay lại menu chính");
+        UIHelper.openWindowAndClose(event, "admin_user", "Quay lại menu chính");
     }
 }

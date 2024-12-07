@@ -48,10 +48,8 @@ public class BookUpdateController {
     @FXML
     private void initialize() {
         try {
-            // Lấy danh sách tất cả sách
             List<Book> books = Book.getAllBooks();
 
-            // Thêm tên sách vào ComboBox
             ObservableList<String> bookTitles = FXCollections.observableArrayList();
             for (Book book : books) {
                 bookTitles.add(book.getTitle());
@@ -67,7 +65,6 @@ public class BookUpdateController {
     @FXML
     private void actionBookUpdate(MouseEvent event) {
         String selectedBookTitle = cbBookTitle.getValue();
-        System.out.println("Debug: Tên sách được chọn để cập nhật: " + selectedBookTitle); // DEBUG
 
         if (selectedBookTitle != null) {
             try {
@@ -115,11 +112,10 @@ public class BookUpdateController {
                 return;
             }
 
-            // Lấy thông tin sách từ CSDL
             Book book = new Book();
             book.setTitle(selectedTitle);
             Book newBook = book.read();
-            // Nếu tìm thấy, hiển thị thông tin
+
             if (newBook != null) {
                 txtBookTitle.setText(selectedTitle);
                 txtAuthor.setText(newBook.getAuthor());
@@ -145,6 +141,6 @@ public class BookUpdateController {
 
     @FXML
     private void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin", "Quay lại menu chính");
+        UIHelper.openWindowAndClose(event, "admin_book", "Quay lại menu chính");
     }
 }
