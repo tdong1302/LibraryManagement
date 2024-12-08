@@ -9,9 +9,9 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 
 public class DatabaseConnection {
-        private static final String URL = "jdbc:mysql://localhost:3306/library_copy";
+        private static final String URL = "jdbc:mysql://localhost:3307/library_copy";
         private static final String USER = "root";
-        private static final String PASSWORD = "trandong1302";
+        private static final String PASSWORD = "0001";
     
         public static Connection getConnection() throws SQLException {
             return DriverManager.getConnection(URL, USER, PASSWORD);

@@ -18,12 +18,12 @@ public class GoogleAPIConnection {
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String API_KEY = "AIzaSyC5Y1csGjJ9FYs-oErBuChG9jINUGLvJaA";
 
-    public static void main(String[] args) throws Exception {
+    public static void addBookFromAPI(String keyword) throws Exception {
         Books books = new Books.Builder(GoogleNetHttpTransport.newTrustedTransport(), JSON_FACTORY, null)
                 .setApplicationName(APPLICATION_NAME)
                 .build();
         
-        Books.Volumes.List volumes = books.volumes().list("english");
+        Books.Volumes.List volumes = books.volumes().list(keyword);
         volumes.setKey(API_KEY);
         
         Volumes volumesResponse = volumes.execute();
@@ -46,7 +46,7 @@ public class GoogleAPIConnection {
         int pageNumber = volume.getVolumeInfo().getPageCount() != null ? volume.getVolumeInfo().getPageCount() : 0;
         String description = volume.getVolumeInfo().getDescription() != null ? volume.getVolumeInfo().getDescription() : "";
         Book book = new Book(author, ISBN, title, year, pageNumber, 0, description);
-        System.out.print("des:" + book.getDescription());
+        System.out.print("description:" + book.getDescription());
         return book;
     }
 }

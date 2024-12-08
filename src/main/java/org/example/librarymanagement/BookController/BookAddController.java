@@ -39,7 +39,7 @@ public class BookAddController {
     private Button btnBack;
 
     @FXML
-    void actionBookAdd(MouseEvent event) {
+    public void actionBookAdd(MouseEvent event) {
         try {
             String title = txtBookTitle.getText();
             String author = txtAuthor.getText();
@@ -60,7 +60,7 @@ public class BookAddController {
     }
 
     @FXML
-    void actionBack(MouseEvent event) {
+    public void actionBack(MouseEvent event) {
         UIHelper.openWindowAndClose(event, "admin", "back to admin");
     }
 }
