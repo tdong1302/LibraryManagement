@@ -26,12 +26,14 @@ public class GoogleAPIConnection {
 
         Volumes volumesResponse = volumes.execute();
 
+        String token = null;
         ObservableList<Book> booksList = FXCollections.observableArrayList();
-
         if (volumesResponse.getItems() != null) {
             for (Volume volume : volumesResponse.getItems()) {
                 Book book = getBook(volume);
-                booksList.add(book);
+                if (book != null) {
+                    booksList.add(book);
+                }
             }
         } else {
             System.out.println("Không tìm thấy sách.");
@@ -46,9 +48,10 @@ public class GoogleAPIConnection {
         int year = volume.getVolumeInfo().getPublishedDate() != null ? Integer.parseInt(volume.getVolumeInfo().getPublishedDate().split("-")[0]) : 0;
         int pageNumber = volume.getVolumeInfo().getPageCount() != null ? volume.getVolumeInfo().getPageCount() : 0;
         String description = volume.getVolumeInfo().getDescription() != null ? volume.getVolumeInfo().getDescription() : "";
-
         int quantity = 0;
-
+        if (ISBN == null) {
+            return null;
+        }
         return new Book(author, ISBN, title, year, pageNumber, quantity, description);
     }
 
