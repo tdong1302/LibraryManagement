@@ -101,6 +101,6 @@ public class UserDeleteController {
 
     @FXML
     private void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin_user", "Back to main menu");
+        UIHelper.switchWindow(event, "admin_user", "Back to main menu");
     }
 }

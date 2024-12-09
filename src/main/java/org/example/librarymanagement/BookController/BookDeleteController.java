@@ -59,19 +59,26 @@ public class BookDeleteController {
                 Book book = new Book();
                 book.setTitle(selectedBookTitle);
                 Book newBook = book.read();
+
                 if (newBook != null) {
+                    if (newBook.isBeingLent()) {
+                        UIHelper.showAlert(Alert.AlertType.ERROR, "Sách này đang được mượn, không thể xoá.");
+                        return;
+                    }
+
                     newBook.delete();
                     UIHelper.showAlert(Alert.AlertType.INFORMATION, "Sách đã được xoá thành công");
                     cbBookTitle.getItems().remove(selectedBookTitle);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                UIHelper.showAlert(Alert.AlertType.ERROR, "Sách không tồn tại, Vui lòng chọn lại sách " + e.getMessage());
+                UIHelper.showAlert(Alert.AlertType.ERROR, "Có lỗi xảy ra: " + e.getMessage());
             }
         } else {
             UIHelper.showAlert(Alert.AlertType.ERROR, "Vui lòng chọn 1 sách để xoá");
         }
     }
+
 
     @FXML
     private void writeInfos() {
@@ -82,12 +89,10 @@ public class BookDeleteController {
                 return;
             }
 
-            // Lấy thông tin sách từ CSDL
             Book book = new Book();
             book.setTitle(selectedTitle);
             Book newBook = book.read();
 
-            // Nếu tìm thấy, hiển thị thông tin
             if (newBook != null) {
                 txtAuthor.setText(newBook.getAuthor());
                 txtISBN.setText(newBook.getISBN());
@@ -107,7 +112,7 @@ public class BookDeleteController {
 
     @FXML
     private void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin_book", "back to main");
+        UIHelper.switchWindow(event, "admin_book", "back to main");
     }
 
 }

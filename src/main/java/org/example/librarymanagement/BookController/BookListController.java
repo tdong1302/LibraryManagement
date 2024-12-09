@@ -101,6 +101,6 @@ public class BookListController implements Initializable {
 
     @FXML
     void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin_book", "back to admin");
+        UIHelper.switchWindow(event, "admin_book", "back to admin");
     }
 }

@@ -1,51 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.example</groupId>
     <artifactId>LibraryManagement</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>LibraryManagement</name>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.2</junit.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
             <version>5.1</version>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5-fluent</artifactId>
             <version>5.1</version>
         </dependency>
-
-
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
-
-
         <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.29</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.29</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -57,7 +44,6 @@
             <artifactId>javafx-fxml</artifactId>
             <version>23.0.1</version>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -70,8 +56,74 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--  https://mvnrepository.com/artifact/com.google.api-client/google-api-client  -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.25.0</version>
+        </dependency>
+        <!--  https://mvnrepository.com/artifact/com.google.apis/google-api-services-books  -->
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-books</artifactId>
+            <version>v1-rev114-1.25.0</version>
+        </dependency>
+        <!--  https://mvnrepository.com/artifact/com.google.api-client/google-api-client-jackson2  -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client-jackson2</artifactId>
+            <version>1.20.0</version>
+        </dependency>
+        <!--  https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client  -->
+        <dependency>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client</artifactId>
+            <version>1.36.0</version>
+        </dependency>
+        <!--  https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind  -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.14.2</version>
+        </dependency>
+        <!--  https://mvnrepository.com/artifact/org.mockito/mockito-core  -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.5.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>4.5.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -89,11 +141,10 @@
                 <version>0.0.8</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
+                        <!--  Default configuration for running with: mvn clean javafx:run  -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.example.librarymanagement/org.example.librarymanagement.HelloApplication
-                            </mainClass>
+                            <mainClass>org.example.librarymanagement/org.example.librarymanagement.HelloApplication </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

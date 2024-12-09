@@ -139,6 +139,6 @@ public class BookUpdateController {
 
     @FXML
     private void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin_book", "Quay lại menu chính");
+        UIHelper.switchWindow(event, "admin_book", "Quay lại menu chính");
     }
 }

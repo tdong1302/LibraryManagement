@@ -10,8 +10,8 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.librarymanagement.UserController.UserListController">
     <children>
-        <TextField fx:id="txtSearchUser" layoutX="247.0" layoutY="26.0" onKeyPressed="#actionSearchUser" prefHeight="26.0" prefWidth="238.0" />
-        <Label layoutX="197.0" layoutY="26.0" prefHeight="26.0" prefWidth="50.0" text="Search">
+        <TextField fx:id="txtSearchUser" layoutX="227.0" layoutY="26.0" onKeyPressed="#actionSearchUser" prefHeight="26.0" prefWidth="374.0" promptText="Nhập từ khóa tìm kiếm" />
+        <Label layoutX="168.0" layoutY="26.0" prefHeight="26.0" prefWidth="50.0" text="Search">
             <font>
                 <Font size="14.0" />
             </font>

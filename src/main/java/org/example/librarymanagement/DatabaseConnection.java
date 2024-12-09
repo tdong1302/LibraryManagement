@@ -318,5 +318,23 @@ public class DatabaseConnection {
         return rentedBooks;
     }
 
+    public static boolean isBookBeingLent(String isbn) {
+        String checkSQL = "SELECT COUNT(*) FROM book_lent WHERE ISBN = ?";
+        boolean isBeingLent = false;
+
+        try (Connection connection = getConnection(); PreparedStatement pstmt = connection.prepareStatement(checkSQL)) {
+            pstmt.setString(1, isbn);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                isBeingLent = rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return isBeingLent;
+    }
+
 
 }

@@ -94,6 +94,6 @@ public class UserListController implements Initializable {
 
     @FXML
     void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin_user", "back to admin");
+        UIHelper.switchWindow(event, "admin_user", "back to admin");
     }
 }

@@ -36,6 +36,26 @@ public class RegisterController {
             return;
         }
 
+        if (!email.endsWith("@gmail.com")) {
+            UIHelper.showAlert(AlertType.ERROR, "Email không hợp lệ!");
+            return;
+        }
+
+        if (password.length() < 8) {
+            UIHelper.showAlert(AlertType.ERROR, "Mật khẩu phải chứa ít nhất 8 ký tự!");
+            return;
+        }
+
+        if (!password.matches(".*[^a-zA-Z0-9].*")) {
+            UIHelper.showAlert(AlertType.ERROR, "Mật khẩu phải chứa ký tự đặc biệt!");
+            return;
+        }
+
+        if (phone.length() != 10 || !phone.matches("\\d+")) {
+            UIHelper.showAlert(AlertType.ERROR, "Số điện thoại không hợp lệ!");
+            return;
+        }
+
         User newUser = new User(email, password, fullName, address, phone);
         newUser.create();
 
@@ -46,6 +66,6 @@ public class RegisterController {
 
     @FXML
     private void handleBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "login", "Back");
+        UIHelper.switchWindow(event, "login", "Back");
     }
 }

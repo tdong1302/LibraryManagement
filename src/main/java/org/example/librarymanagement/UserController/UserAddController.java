@@ -42,7 +42,7 @@ public class UserAddController {
 
     @FXML
     private void actionBack(MouseEvent event) {
-        UIHelper.openWindowAndClose(event, "admin_user", "Quay lại menu chính");
+        UIHelper.switchWindow(event, "admin_user", "Quay lại menu chính");
     }
 
 }

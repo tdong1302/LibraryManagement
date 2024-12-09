@@ -105,4 +105,9 @@ public class Book implements Manage {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public boolean isBeingLent() {
+        return DatabaseConnection.isBookBeingLent(this.ISBN);
+    }
+
 }
