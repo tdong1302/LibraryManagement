@@ -67,7 +67,6 @@ public class BookUpdateController {
             bookList.setAll(books);
             bookTableView.setItems(bookList);
         } catch (Exception e) {
-            e.printStackTrace();
             UIHelper.showAlert(Alert.AlertType.ERROR, "Lỗi load book data.");
         }
     }
@@ -121,7 +120,6 @@ public class BookUpdateController {
 
                 loadBookData();
             } catch (Exception e) {
-                e.printStackTrace();
                 UIHelper.showAlert(Alert.AlertType.ERROR, "Có lỗi xảy ra khi cập nhật sách");
             }
         } else {
