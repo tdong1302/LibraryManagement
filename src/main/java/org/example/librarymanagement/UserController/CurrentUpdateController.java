@@ -11,28 +11,21 @@ import org.example.librarymanagement.UIHelper;
 
 public class CurrentUpdateController {
 
+    private final User currentUser = LoginController.getCurrentUser();
     @FXML
     private TextField txtUserName;
-
     @FXML
     private TextField txtUserEmail;
-
     @FXML
     private TextField txtUserPhone;
-
     @FXML
     private TextField txtUserAddress;
-
     @FXML
     private TextField txtUserPassword;
-
     @FXML
     private Button btnUpdate;
-
     @FXML
     private Button btnBack;
-
-    private User currentUser = LoginController.getCurrentUser();
 
     @FXML
     private void initialize() {
@@ -56,6 +49,7 @@ public class CurrentUpdateController {
             UIHelper.showAlert(AlertType.ERROR, "Đã xảy ra lỗi khi tải thông tin người dùng.");
         }
     }
+
     @FXML
     private void actionUserUpdate(MouseEvent event) {
         try {
@@ -84,7 +78,6 @@ public class CurrentUpdateController {
             UIHelper.showAlert(AlertType.ERROR, "Có lỗi xảy ra khi cập nhật thông tin.");
         }
     }
-
 
     @FXML
     private void actionBack(MouseEvent event) {

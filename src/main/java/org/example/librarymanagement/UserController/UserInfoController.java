@@ -9,22 +9,17 @@ import org.example.librarymanagement.UIHelper;
 
 public class UserInfoController {
 
+    private final User currentUser = LoginController.getCurrentUser();
     @FXML
     private Text userIdText;
-
     @FXML
     private Text fullNameText;
-
     @FXML
     private Text emailText;
-
     @FXML
     private Text addressText;
-
     @FXML
     private Text phoneText;
-
-    private User currentUser = LoginController.getCurrentUser();
 
     @FXML
     public void initialize() {
@@ -50,7 +45,7 @@ public class UserInfoController {
 
     @FXML
     private void actionUpdate(MouseEvent event) {
-            UIHelper.switchWindow(event, "user_current_update", "Cập nhật thông tin người dùng");
+        UIHelper.switchWindow(event, "user_current_update", "Cập nhật thông tin người dùng");
     }
 
 }

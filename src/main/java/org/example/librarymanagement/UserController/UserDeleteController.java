@@ -3,30 +3,28 @@ package org.example.librarymanagement.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import org.example.librarymanagement.Class.User;
-import org.example.librarymanagement.DatabaseConnection;
 import org.example.librarymanagement.UIHelper;
-
-import java.util.List;
 
 public class UserDeleteController {
 
+    private final ObservableList<User> userList = FXCollections.observableArrayList();
     @FXML
-    private ComboBox<String> cbUserName;
+    private TextField txtSearchUser;
     @FXML
-    private TextField txtUserName;
+    private TableView<User> userTableView;
     @FXML
-    private TextField txtUserEmail;
+    private TableColumn<User, String> userNameColumn;
     @FXML
-    private TextField txtUserPhone;
+    private TableColumn<User, String> userEmailColumn;
     @FXML
-    private TextField txtUserAddress;
-
+    private TableColumn<User, String> userPhoneColumn;
+    @FXML
+    private TableColumn<User, String> userAddressColumn;
     @FXML
     private Button btnDelete;
     @FXML
@@ -34,69 +32,59 @@ public class UserDeleteController {
 
     @FXML
     private void initialize() {
+        initializeColumns();
+        loadUserData();
+    }
+
+    private void initializeColumns() {
+        userNameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
+        userEmailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        userPhoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        userAddressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+    }
+
+    private void loadUserData() {
         try {
-            List<User> users = User.getAllUsers();
-
-            ObservableList<String> userNames = FXCollections.observableArrayList();
-            for (User user : users) {
-                userNames.add(user.getFullName());
-            }
-
-            cbUserName.setItems(userNames);
-            txtUserName.setEditable(false);
-            txtUserEmail.setEditable(false);
-            txtUserPhone.setEditable(false);
-            txtUserAddress.setEditable(false);
-            cbUserName.setItems(userNames);
+            ObservableList<User> users = User.getAllUsers();
+            userList.setAll(users);
+            userTableView.setItems(userList);
         } catch (Exception e) {
             e.printStackTrace();
-            UIHelper.showAlert(Alert.AlertType.ERROR, "lỗi init list user");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "Lỗi load user data");
         }
     }
 
     @FXML
     private void actionUserDelete(MouseEvent event) {
-        String selectedUserName = cbUserName.getValue();
-        if (selectedUserName != null) {
+        User selectedUser = userTableView.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
             try {
-                User user = new User();
-                user.setFullName(selectedUserName);
-                User existingUser = user.read();
-                if (existingUser != null) {
-                    existingUser.delete();
-                    UIHelper.showAlert(Alert.AlertType.INFORMATION, "đã xoá người dùng thành công");
-                    cbUserName.getItems().remove(selectedUserName);
-                }
+                selectedUser.delete();
+                userList.remove(selectedUser);
+                UIHelper.showAlert(Alert.AlertType.INFORMATION, "Xoá người dùng thành công");
             } catch (Exception e) {
                 e.printStackTrace();
-                UIHelper.showAlert(Alert.AlertType.ERROR, "k tìm thấy người dùng" + e.getMessage());
+                UIHelper.showAlert(Alert.AlertType.ERROR, "Lỗi xoá người dùng: " + e.getMessage());
             }
         } else {
-            UIHelper.showAlert(Alert.AlertType.ERROR, "vui lòng chọn 1 người dùng để xoá");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "Vui lòng chọn một người dùng để xoá");
         }
     }
 
     @FXML
-    private void writeInfos() {
-        try {
-            String selectedUserName = cbUserName.getValue();
+    private void actionSearchUser(KeyEvent event) {
+        String searchText = txtSearchUser.getText().toLowerCase();
 
-            User user = DatabaseConnection.findUserByFullName(selectedUserName);
-
-            if (user != null) {
-                txtUserName.setText(user.getFullName());
-                txtUserEmail.setText(user.getEmail());
-                txtUserPhone.setText(user.getPhone());
-                txtUserAddress.setText(user.getAddress());
-            } else {
-                txtUserName.clear();
-                txtUserEmail.clear();
-                txtUserPhone.clear();
-                txtUserAddress.clear();
+        ObservableList<User> filteredList = FXCollections.observableArrayList();
+        for (User user : userList) {
+            if (user.getFullName().toLowerCase().contains(searchText) ||
+                    user.getEmail().toLowerCase().contains(searchText) ||
+                    user.getPhone().toLowerCase().contains(searchText)) {
+                filteredList.add(user);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+        userTableView.setItems(filteredList);
     }
 
     @FXML

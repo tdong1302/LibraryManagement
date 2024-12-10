@@ -16,34 +16,25 @@ import java.util.ResourceBundle;
 
 public class UserListController implements Initializable {
 
+    private final ObservableList<User> userList = FXCollections.observableArrayList();
     @FXML
     private TextField txtSearchUser;
-
     @FXML
     private TableView<User> userTableView;
-
     @FXML
     private Button btnBack;
-
     @FXML
     private TableColumn<User, String> userNameColumn;
-
     @FXML
     private TableColumn<User, String> userEmailColumn;
-
     @FXML
     private TableColumn<User, String> userPhoneColumn;
-
     @FXML
     private TableColumn<User, String> userAddressColumn;
-
     @FXML
     private TableColumn<User, String> userPasswordColumn;
-
     @FXML
     private TableColumn<User, Integer> userIDColumn;
-
-    private ObservableList<User> userList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

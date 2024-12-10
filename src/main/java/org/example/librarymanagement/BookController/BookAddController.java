@@ -31,7 +31,6 @@ public class BookAddController {
     @FXML
     private TextField txtQuantity;
 
-
     @FXML
     private Button btnAdd;
 

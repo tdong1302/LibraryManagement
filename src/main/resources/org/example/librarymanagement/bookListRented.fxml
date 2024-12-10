@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="555.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.librarymanagement.BookController.BookListRentedController">
-   <children>
-      <TableView fx:id="rentedBookTable" layoutX="28.0" layoutY="78.0" prefHeight="462.0" prefWidth="646.0">
-         <columns>
-            <TableColumn fx:id="rentedBookIdColumn" prefWidth="90.40002250671387" text="Book Rent ID" />
-            <TableColumn fx:id="rentedBookIsbnColumn" prefWidth="148.79999542236328" text="ISBN" />
-            <TableColumn fx:id="rentedBookUserIdColumn" prefWidth="60.79998779296875" text="User ID" />
-            <TableColumn fx:id="rentedBookBorrowDateColumn" prefWidth="156.79998779296875" text="BorrowDate" />
-            <TableColumn fx:id="rentedBookReturnDateColumn" prefWidth="189.59994506835938" text="Return Date" />
-         </columns>
-      </TableView>
-      <Button fx:id="btnBack" layoutX="617.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#actionBack" prefHeight="30.0" prefWidth="66.0" text="Back">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="555.0" prefWidth="698.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="org.example.librarymanagement.BookController.BookListRentedController">
+    <children>
+        <TableView fx:id="rentedBookTable" layoutX="28.0" layoutY="78.0" prefHeight="462.0" prefWidth="646.0">
+            <columns>
+                <TableColumn fx:id="rentedBookIdColumn" prefWidth="90.40002250671387" text="Book Rent ID"/>
+                <TableColumn fx:id="rentedBookIsbnColumn" prefWidth="148.79999542236328" text="ISBN"/>
+                <TableColumn fx:id="rentedBookUserIdColumn" prefWidth="60.79998779296875" text="User ID"/>
+                <TableColumn fx:id="rentedBookBorrowDateColumn" prefWidth="156.79998779296875" text="BorrowDate"/>
+                <TableColumn fx:id="rentedBookReturnDateColumn" prefWidth="189.59994506835938" text="Return Date"/>
+            </columns>
+        </TableView>
+        <Button fx:id="btnBack" layoutX="617.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#actionBack"
+                prefHeight="30.0" prefWidth="66.0" text="Back">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

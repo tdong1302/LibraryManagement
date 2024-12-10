@@ -6,14 +6,13 @@ import org.example.librarymanagement.DatabaseConnection;
 import java.util.ArrayList;
 
 public class User implements Manage {
+    private final ArrayList<Rented_Book> user_rented_books = new ArrayList<>();
     private int ID;
     private String fullName;
     private String password;
     private String address;
     private String phone;
     private String email;
-
-    private ArrayList<Rented_Book> user_rented_books = new ArrayList<>();
 
     public User() {
     }

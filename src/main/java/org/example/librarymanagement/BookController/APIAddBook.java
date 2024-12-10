@@ -64,10 +64,10 @@ public class APIAddBook {
     }
 
     @FXML
-    void actionBorrow(MouseEvent event) {
+    void actionBookAddFromAPI(MouseEvent event) {
         Book selectedBook = tableViewBooks.getSelectionModel().getSelectedItem();
         if (selectedBook == null) {
-            UIHelper.showAlert(Alert.AlertType.WARNING, "Vui lòng chọn một cuốn sách để mượn.");
+            UIHelper.showAlert(Alert.AlertType.WARNING, "Vui lòng chọn một cuốn sách để thêm.");
             return;
         }
 
@@ -93,10 +93,10 @@ public class APIAddBook {
 
         try {
             selectedBook.create();
-            UIHelper.showAlert(Alert.AlertType.INFORMATION, "Mượn sách thành công!");
+            UIHelper.showAlert(Alert.AlertType.INFORMATION, "Thêm sách thành công!");
         } catch (Exception e) {
             e.printStackTrace();
-            UIHelper.showAlert(Alert.AlertType.ERROR, "Đã xảy ra lỗi trong quá trình mượn sách.");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "Đã xảy ra lỗi trong quá trình thêm sách.");
         }
     }
 

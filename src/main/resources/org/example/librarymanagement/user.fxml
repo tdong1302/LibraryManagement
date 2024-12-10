@@ -5,24 +5,31 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="372.0" prefWidth="354.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.librarymanagement.MainController.UserController">
-    <Button fx:id="btnBack" layoutX="232.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#actionBack" prefHeight="40.0" prefWidth="107.0" text="BACK">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="372.0" prefWidth="354.0"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="org.example.librarymanagement.MainController.UserController">
+    <Button fx:id="btnBack" layoutX="232.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#actionBack"
+            prefHeight="40.0" prefWidth="107.0" text="BACK">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="18.0"/>
         </font>
     </Button>
-   <Button layoutX="200.0" layoutY="93.0" mnemonicParsing="false" onMouseClicked="#actionBorrowBook" prefHeight="67.0" prefWidth="132.0" text="Borrow Book">
-      <font>
-         <Font size="18.0" />
-      </font></Button>
-   <ImageView fitHeight="210.0" fitWidth="168.0" layoutX="16.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@image/user.png" />
-      </image>
-   </ImageView>
-   <Button layoutX="200.0" layoutY="203.0" mnemonicParsing="false" onMouseClicked="#actionViewUserInfo" prefHeight="60.0" prefWidth="132.0" text="Info User">
-      <font>
-         <Font size="18.0" />
-      </font></Button>
+    <Button layoutX="200.0" layoutY="93.0" mnemonicParsing="false" onMouseClicked="#actionBorrowBook" prefHeight="67.0"
+            prefWidth="132.0" text="Borrow Book">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Button>
+    <ImageView fitHeight="210.0" fitWidth="168.0" layoutX="16.0" layoutY="77.0" pickOnBounds="true"
+               preserveRatio="true">
+        <image>
+            <Image url="@image/user.png"/>
+        </image>
+    </ImageView>
+    <Button layoutX="200.0" layoutY="203.0" mnemonicParsing="false" onMouseClicked="#actionViewUserInfo"
+            prefHeight="60.0" prefWidth="132.0" text="Info User">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Button>
 </AnchorPane>

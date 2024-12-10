@@ -3,29 +3,30 @@ package org.example.librarymanagement.BookController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import org.example.librarymanagement.Class.Book;
 import org.example.librarymanagement.UIHelper;
 
-import java.util.List;
-
 public class BookDeleteController {
-    @FXML
-    private ComboBox<String> cbBookTitle;
-    @FXML
-    private TextField txtAuthor;
-    @FXML
-    private TextField txtISBN;
-    @FXML
-    private TextField txtYear;
-    @FXML
-    private TextField txtQuantity;
 
-
+    private final ObservableList<Book> bookList = FXCollections.observableArrayList();
+    @FXML
+    private TextField txtSearchBook;
+    @FXML
+    private TableView<Book> bookTableView;
+    @FXML
+    private TableColumn<Book, String> bookTitleColumn;
+    @FXML
+    private TableColumn<Book, String> bookAuthorColumn;
+    @FXML
+    private TableColumn<Book, String> bookISBNColumn;
+    @FXML
+    private TableColumn<Book, Integer> bookYearColumn;
+    @FXML
+    private TableColumn<Book, Integer> bookQuantityColumn;
     @FXML
     private Button btnDelete;
     @FXML
@@ -33,87 +34,71 @@ public class BookDeleteController {
 
     @FXML
     private void initialize() {
-        try {
-            List<Book> books = Book.getAllBooks();
+        initializeColumns();
+        loadBookData();
+    }
 
-            ObservableList<String> bookTitles = FXCollections.observableArrayList();
-            for (Book book : books) {
-                bookTitles.add(book.getTitle());
-            }
-            cbBookTitle.setItems(bookTitles);
-            txtAuthor.setEditable(false);
-            txtISBN.setEditable(false);
-            txtYear.setEditable(false);
-            txtQuantity.setEditable(false);
+    private void initializeColumns() {
+        bookTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        bookAuthorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+        bookISBNColumn.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
+        bookYearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+        bookQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+    }
+
+    private void loadBookData() {
+        try {
+            ObservableList<Book> books = Book.getAllBooks();
+            bookList.setAll(books);
+            bookTableView.setItems(bookList);
         } catch (Exception e) {
             e.printStackTrace();
-            UIHelper.showAlert(Alert.AlertType.INFORMATION, "Lỗi init book");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "Lỗi load book data");
         }
     }
 
     @FXML
     private void actionBookDelete(MouseEvent event) {
-        String selectedBookTitle = cbBookTitle.getValue();
-        if (selectedBookTitle != null) {
+        Book selectedBook = bookTableView.getSelectionModel().getSelectedItem();
+        if (selectedBook != null) {
             try {
-                Book book = new Book();
-                book.setTitle(selectedBookTitle);
-                Book newBook = book.read();
-
-                if (newBook != null) {
-                    if (newBook.isBeingLent()) {
-                        UIHelper.showAlert(Alert.AlertType.ERROR, "Sách này đang được mượn, không thể xoá.");
-                        return;
-                    }
-
-                    newBook.delete();
-                    UIHelper.showAlert(Alert.AlertType.INFORMATION, "Sách đã được xoá thành công");
-                    cbBookTitle.getItems().remove(selectedBookTitle);
+                if (selectedBook.isBeingLent()) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Sách này đang được mượn, không thể xoá.");
+                    return;
                 }
+
+                selectedBook.delete();
+                bookList.remove(selectedBook);
+                UIHelper.showAlert(Alert.AlertType.INFORMATION, "Sách đã được xoá thành công.");
             } catch (Exception e) {
                 e.printStackTrace();
                 UIHelper.showAlert(Alert.AlertType.ERROR, "Có lỗi xảy ra: " + e.getMessage());
             }
         } else {
-            UIHelper.showAlert(Alert.AlertType.ERROR, "Vui lòng chọn 1 sách để xoá");
+            UIHelper.showAlert(Alert.AlertType.ERROR, "Vui lòng chọn một sách để xoá");
         }
     }
-
 
     @FXML
-    private void writeInfos() {
-        try {
-            String selectedTitle = cbBookTitle.getValue();
-            if (selectedTitle == null || selectedTitle.isEmpty()) {
-                System.out.println("No book title selected.");
-                return;
-            }
+    private void actionSearchBook(KeyEvent event) {
+        String searchText = txtSearchBook.getText().toLowerCase();
 
-            Book book = new Book();
-            book.setTitle(selectedTitle);
-            Book newBook = book.read();
-
-            if (newBook != null) {
-                txtAuthor.setText(newBook.getAuthor());
-                txtISBN.setText(newBook.getISBN());
-                txtYear.setText(String.valueOf(newBook.getYear()));
-                txtQuantity.setText(String.valueOf(newBook.getQuantity()));
-            } else {
-                System.out.println("Book not found.");
-                txtAuthor.clear();
-                txtISBN.clear();
-                txtYear.clear();
-                txtQuantity.clear();
+        ObservableList<Book> filteredList = FXCollections.observableArrayList();
+        for (Book book : bookList) {
+            if (book.getTitle().toLowerCase().contains(searchText) ||
+                    book.getAuthor().toLowerCase().contains(searchText) ||
+                    book.getISBN().toLowerCase().contains(searchText) ||
+                    String.valueOf(book.getYear()).contains(searchText)) {
+                filteredList.add(book);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+        bookTableView.setItems(filteredList);
     }
+
 
     @FXML
     private void actionBack(MouseEvent event) {
         UIHelper.switchWindow(event, "admin_book", "back to main");
     }
-
 }
-

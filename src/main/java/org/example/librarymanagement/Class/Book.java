@@ -32,7 +32,6 @@ public class Book implements Manage {
     @Override
     public void create() {
         DatabaseConnection.createBook(this);
-        ;
     }
 
     @Override

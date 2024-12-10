@@ -12,25 +12,19 @@ import org.example.librarymanagement.UIHelper;
 
 public class BookListRentedController {
 
+    private final ObservableList<Rented_Book> rentedBooksList = FXCollections.observableArrayList();
     @FXML
     private TableView<Rented_Book> rentedBookTable;
-
     @FXML
     private TableColumn<Rented_Book, Integer> rentedBookIdColumn;
-
     @FXML
     private TableColumn<Rented_Book, String> rentedBookIsbnColumn;
-
     @FXML
     private TableColumn<Rented_Book, Integer> rentedBookUserIdColumn;
-
     @FXML
     private TableColumn<Rented_Book, String> rentedBookBorrowDateColumn;
-
     @FXML
     private TableColumn<Rented_Book, String> rentedBookReturnDateColumn;
-
-    private ObservableList<Rented_Book> rentedBooksList = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {

@@ -1,5 +1,7 @@
 package org.example.librarymanagement;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import org.example.librarymanagement.Class.User;
 
 public class RegisterController {
 
+    private final ObservableList<User> userList = FXCollections.observableArrayList();
     @FXML
     private TextField registerEmailField;
     @FXML

@@ -6,11 +6,11 @@ import org.example.librarymanagement.DatabaseConnection;
 import java.time.LocalDate;
 
 public class Rented_Book {
+    private final String ISBN;
+    private final int userID;
+    private final LocalDate borrowDate;
+    private final LocalDate returnDate;
     private int ID;
-    private String ISBN;
-    private int userID;
-    private LocalDate borrowDate;
-    private LocalDate returnDate;
 
     public Rented_Book(String ISBN, int userID, LocalDate borrowDate, LocalDate returnDate) {
         this.ISBN = ISBN;
