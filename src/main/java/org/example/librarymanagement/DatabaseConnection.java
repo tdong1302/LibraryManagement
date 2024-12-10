@@ -327,14 +327,28 @@ public class DatabaseConnection {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                isBeingLent = rs.getInt(1) > 0;
+                return rs.getInt(1) > 0;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return isBeingLent;
+        return false;
     }
 
+    public static boolean isUserRentedBooks(int userID) {
+        String query = "SELECT COUNT(*) FROM book_lent WHERE userID = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
 
+            stmt.setInt(1, userID);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

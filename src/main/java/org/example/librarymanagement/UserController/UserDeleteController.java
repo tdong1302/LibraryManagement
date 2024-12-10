@@ -59,6 +59,11 @@ public class UserDeleteController {
         User selectedUser = userTableView.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
             try {
+                if (selectedUser.checkUserRentBook()) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Người dùng đang mượn sách, không thể xoá.");
+                    return;
+                }
+
                 selectedUser.delete();
                 userList.remove(selectedUser);
                 UIHelper.showAlert(Alert.AlertType.INFORMATION, "Xoá người dùng thành công");
@@ -70,6 +75,7 @@ public class UserDeleteController {
             UIHelper.showAlert(Alert.AlertType.ERROR, "Vui lòng chọn một người dùng để xoá");
         }
     }
+
 
     @FXML
     private void actionSearchUser(KeyEvent event) {

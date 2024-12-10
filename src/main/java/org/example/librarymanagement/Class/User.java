@@ -101,15 +101,11 @@ public class User implements Manage {
         this.ID = ID;
     }
 
-    public ArrayList<Rented_Book> getUserRentedBooks() {
-        return user_rented_books;
-    }
-
     public void addRentedBook(Rented_Book rentedBook) {
         user_rented_books.add(rentedBook);
     }
 
-    public void returnRentedBook(Rented_Book rentedBook) {
-        user_rented_books.remove(rentedBook);
+    public boolean checkUserRentBook() {
+        return DatabaseConnection.isUserRentedBooks(this.ID);
     }
 }
