@@ -5,7 +5,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="538.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="org.example.librarymanagement.BookController.BookDetailController">
+            fx:controller="org.example.librarymanagement.bookController.BookDetailController">
     <children>
         <Text fx:id="bookTitle" layoutX="33.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title"/>
         <Text fx:id="bookAuthor" layoutX="33.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author"/>

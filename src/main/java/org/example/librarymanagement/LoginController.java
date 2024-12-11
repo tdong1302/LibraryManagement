@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import org.example.librarymanagement.Class.User;
+import org.example.librarymanagement.entity.User;
 
 public class LoginController {
 

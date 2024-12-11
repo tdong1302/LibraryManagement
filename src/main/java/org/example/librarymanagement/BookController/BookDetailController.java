@@ -1,8 +1,8 @@
-package org.example.librarymanagement.BookController;
+package org.example.librarymanagement.bookController;
 
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
-import org.example.librarymanagement.Class.Book;
+import org.example.librarymanagement.entity.Book;
 
 public class BookDetailController {
 

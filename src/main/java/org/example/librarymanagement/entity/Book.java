@@ -1,4 +1,4 @@
-package org.example.librarymanagement.Class;
+package org.example.librarymanagement.entity;
 
 import javafx.collections.ObservableList;
 import org.example.librarymanagement.DatabaseConnection;
@@ -109,4 +109,7 @@ public class Book implements Manage {
         return DatabaseConnection.isBookBeingLent(this.ISBN);
     }
 
+    public boolean isISBNExists() {
+        return DatabaseConnection.isISBNBookExist(this.ISBN);
+    }
 }

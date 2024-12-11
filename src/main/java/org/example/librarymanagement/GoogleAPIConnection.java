@@ -8,7 +8,7 @@ import com.google.api.services.books.model.Volume;
 import com.google.api.services.books.model.Volumes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.example.librarymanagement.Class.Book;
+import org.example.librarymanagement.entity.Book;
 
 public class GoogleAPIConnection {
 

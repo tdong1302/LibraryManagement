@@ -1,4 +1,4 @@
-package org.example.librarymanagement.BookController;
+package org.example.librarymanagement.bookController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.example.librarymanagement.Class.Book;
+import org.example.librarymanagement.entity.Book;
 import org.example.librarymanagement.UIHelper;
 
 import java.io.IOException;

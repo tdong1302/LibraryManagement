@@ -1,4 +1,4 @@
-package org.example.librarymanagement.Class;
+package org.example.librarymanagement.entity;
 
 import javafx.collections.ObservableList;
 import org.example.librarymanagement.DatabaseConnection;

@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.example.librarymanagement.Class.User;
+import org.example.librarymanagement.entity.User;
 
 public class RegisterController {
 
@@ -60,6 +60,10 @@ public class RegisterController {
         }
 
         User newUser = new User(email, password, fullName, address, phone);
+        if (newUser.isEmailUserExist()) {
+            UIHelper.showAlert(AlertType.ERROR, "Email này đã tồn tại");
+            return;
+        }
         newUser.create();
 
         UIHelper.showAlert(AlertType.INFORMATION, "Đăng ký thành công!");

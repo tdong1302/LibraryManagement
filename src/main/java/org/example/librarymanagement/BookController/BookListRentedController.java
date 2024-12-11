@@ -1,4 +1,4 @@
-package org.example.librarymanagement.BookController;
+package org.example.librarymanagement.bookController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import org.example.librarymanagement.Class.Rented_Book;
+import org.example.librarymanagement.entity.Rented_Book;
 import org.example.librarymanagement.UIHelper;
 
 public class BookListRentedController {

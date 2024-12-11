@@ -1,4 +1,4 @@
-package org.example.librarymanagement.UserController;
+package org.example.librarymanagement.userController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,8 +7,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import org.example.librarymanagement.Class.User;
 import org.example.librarymanagement.UIHelper;
+import org.example.librarymanagement.entity.User;
 
 public class UserDeleteController {
 

@@ -1,4 +1,4 @@
-package org.example.librarymanagement.MainController;
+package org.example.librarymanagement.mainController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

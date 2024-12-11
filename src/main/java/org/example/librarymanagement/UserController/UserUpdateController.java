@@ -1,4 +1,4 @@
-package org.example.librarymanagement.UserController;
+package org.example.librarymanagement.userController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,8 +7,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import org.example.librarymanagement.Class.User;
 import org.example.librarymanagement.UIHelper;
+import org.example.librarymanagement.entity.User;
 
 public class UserUpdateController {
 
@@ -82,11 +82,42 @@ public class UserUpdateController {
         User selectedUser = userTableView.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
             try {
-                selectedUser.setFullName(txtUserName.getText());
-                selectedUser.setEmail(txtUserEmail.getText());
-                selectedUser.setPhone(txtUserPhone.getText());
-                selectedUser.setAddress(txtUserAddress.getText());
-                selectedUser.setPassword(txtUserPassword.getText());
+                String fullName = txtUserName.getText();
+                String email = txtUserEmail.getText();
+                String password = txtUserPassword.getText();
+                String address = txtUserAddress.getText();
+                String phone = txtUserPhone.getText();
+
+                if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() || address.isEmpty() || phone.isEmpty()) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Vui lòng điền đầy đủ thông tin!");
+                    return;
+                }
+
+                if (!email.endsWith("@gmail.com")) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Email không hợp lệ!");
+                    return;
+                }
+
+                if (password.length() < 8) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Mật khẩu phải chứa ít nhất 8 ký tự!");
+                    return;
+                }
+
+                if (!password.matches(".*[^a-zA-Z0-9].*")) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Mật khẩu phải chứa ký tự đặc biệt!");
+                    return;
+                }
+
+                if (phone.length() != 10 || !phone.matches("\\d+")) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Số điện thoại không hợp lệ!");
+                    return;
+                }
+
+                selectedUser.setFullName(fullName);
+                selectedUser.setEmail(email);
+                selectedUser.setPhone(phone);
+                selectedUser.setAddress(address);
+                selectedUser.setPassword(password);
 
                 selectedUser.update();
 

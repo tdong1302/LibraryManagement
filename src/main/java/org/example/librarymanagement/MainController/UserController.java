@@ -1,4 +1,4 @@
-package org.example.librarymanagement.MainController;
+package org.example.librarymanagement.mainController;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -22,4 +22,8 @@ public class UserController {
         UIHelper.switchWindow(event, "infoUser", "Thông tin người dùng");
     }
 
+    @FXML
+    private void handleGameButton(MouseEvent event) {
+        UIHelper.switchWindow(event, "game", "Back to main menu");
+    }
 }

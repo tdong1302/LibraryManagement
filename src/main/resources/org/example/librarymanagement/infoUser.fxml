@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="288.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="org.example.librarymanagement.UserController.UserInfoController">
+            fx:controller="org.example.librarymanagement.userController.UserInfoController">
     <children>
         <Text fx:id="userIdText" layoutX="37.0" layoutY="31.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
               text="User ID" wrappingWidth="68.04998779296875">

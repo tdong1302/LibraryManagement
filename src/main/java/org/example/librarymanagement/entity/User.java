@@ -1,4 +1,4 @@
-package org.example.librarymanagement.Class;
+package org.example.librarymanagement.entity;
 
 import javafx.collections.ObservableList;
 import org.example.librarymanagement.DatabaseConnection;
@@ -107,5 +107,9 @@ public class User implements Manage {
 
     public boolean checkUserRentBook() {
         return DatabaseConnection.isUserRentedBooks(this.ID);
+    }
+
+    public boolean isEmailUserExist() {
+        return DatabaseConnection.isEmailUserExist(this.email);
     }
 }

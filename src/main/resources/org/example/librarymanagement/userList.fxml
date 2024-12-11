@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0"
             xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="org.example.librarymanagement.UserController.UserListController">
+            fx:controller="org.example.librarymanagement.userController.UserListController">
     <children>
         <TextField fx:id="txtSearchUser" layoutX="227.0" layoutY="26.0" onKeyPressed="#actionSearchUser"
                    prefHeight="26.0" prefWidth="374.0" promptText="Nhập từ khóa tìm kiếm"/>

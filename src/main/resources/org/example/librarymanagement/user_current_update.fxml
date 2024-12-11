@@ -6,7 +6,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="378.0" prefWidth="466.0" xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="org.example.librarymanagement.UserController.CurrentUpdateController">
+            fx:controller="org.example.librarymanagement.userController.CurrentUpdateController">
     <children>
         <TextField fx:id="txtUserName" layoutX="150.0" layoutY="50.0" prefHeight="30.0" prefWidth="242.0"/>
         <TextField fx:id="txtUserEmail" layoutX="150.0" layoutY="100.0" prefHeight="30.0" prefWidth="242.0"/>

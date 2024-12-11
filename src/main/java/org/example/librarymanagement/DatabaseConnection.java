@@ -2,9 +2,9 @@ package org.example.librarymanagement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.example.librarymanagement.Class.Book;
-import org.example.librarymanagement.Class.Rented_Book;
-import org.example.librarymanagement.Class.User;
+import org.example.librarymanagement.entity.Book;
+import org.example.librarymanagement.entity.Rented_Book;
+import org.example.librarymanagement.entity.User;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -351,4 +351,37 @@ public class DatabaseConnection {
         }
         return false;
     }
+
+    public static boolean isISBNBookExist(String ISBN) {
+        String query = "SELECT COUNT(*) FROM books WHERE isbn = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setString(1, ISBN);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean isEmailUserExist(String email) {
+        String query = "SELECT COUNT(*) FROM users WHERE email = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

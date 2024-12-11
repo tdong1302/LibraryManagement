@@ -1,4 +1,4 @@
-package org.example.librarymanagement.Class;
+package org.example.librarymanagement.entity;
 
 public interface Manage {
     void create();

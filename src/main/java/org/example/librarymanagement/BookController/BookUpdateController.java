@@ -1,4 +1,4 @@
-package org.example.librarymanagement.BookController;
+package org.example.librarymanagement.bookController;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,8 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import org.example.librarymanagement.Class.Book;
 import org.example.librarymanagement.UIHelper;
+import org.example.librarymanagement.entity.Book;
 
 public class BookUpdateController {
 
@@ -106,6 +106,21 @@ public class BookUpdateController {
                 int year = Integer.parseInt(yearText);
                 int pageNumber = Integer.parseInt(pageNumberText);
                 int quantity = Integer.parseInt(quantityText);
+
+                if (year < 0 || year >= 2025) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Năm xuất bản không hợp lệ");
+                    return;
+                }
+
+                if (pageNumber <= 0) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Số trang phải lớn hơn 0");
+                    return;
+                }
+
+                if (quantity <= 0) {
+                    UIHelper.showAlert(Alert.AlertType.ERROR, "Số lượng sách phải lớn hơn 0");
+                    return;
+                }
 
                 selectedBook.setTitle(title);
                 selectedBook.setAuthor(author);

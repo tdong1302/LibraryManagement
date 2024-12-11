@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="428.0" prefWidth="503.0"
             xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="org.example.librarymanagement.MainController.AdminController">
+            fx:controller="org.example.librarymanagement.mainController.AdminController">
     <children>
         <Button fx:id="btnManageBook" layoutX="339.0" layoutY="54.0" mnemonicParsing="false"
                 onMouseClicked="#openBookManage" prefHeight="78.0" prefWidth="114.0" text="Manage Book">

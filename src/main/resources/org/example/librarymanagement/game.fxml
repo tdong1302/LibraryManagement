@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="520.0" prefWidth="631.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.librarymanagement.game.GameScreenController">
+   <children>
+      <Button layoutX="501.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#actionBack" prefHeight="40.0" prefWidth="84.0" text="EXIT GAME" />
+      <Label layoutX="224.0" layoutY="14.0" style="-fx-font-size: 28px; -fx-font-weight: bold;" text="Đoán Tên Sách" />
+      <TextField fx:id="guessTextField" layoutX="115.0" layoutY="310.0" maxWidth="400" prefHeight="50.0" prefWidth="384.0" promptText="Nhập câu trả lời..." style="-fx-font-size: 18px; -fx-padding: 10; -fx-border-color: #bbb; -fx-border-radius: 5px;" />
+      <HBox alignment="CENTER" layoutX="158.0" layoutY="381.0" spacing="20">
+         <children>
+            <Button fx:id="submitButton" onAction="#handleSubmitButton" style="-fx-font-size: 18px; -fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Submit" />
+            <Button fx:id="nextButton" disable="true" onAction="#handleNextButton" style="-fx-font-size: 18px; -fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Next" />
+            <Button fx:id="skipButton" onAction="#handleSkipButton" style="-fx-font-size: 18px; -fx-background-color: #ffc107; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 5px; -fx-background-radius: 5px;" text="Bỏ qua" />
+         </children>
+      </HBox>
+      <Label fx:id="scoreLabel" layoutX="252.0" layoutY="427.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Điểm: 0" />
+      <TextArea fx:id="descriptionText" layoutX="96.0" layoutY="103.0" prefHeight="166.0" prefWidth="451.0" promptText="Mô tả tài liệu" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font></TextArea>
+      <Label fx:id="wrongLabel" layoutX="260.0" layoutY="54.0" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Số câu sai : 0" />
+   </children>
+</AnchorPane>

@@ -1,11 +1,11 @@
-package org.example.librarymanagement.UserController;
+package org.example.librarymanagement.userController;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import org.example.librarymanagement.Class.User;
 import org.example.librarymanagement.LoginController;
 import org.example.librarymanagement.UIHelper;
+import org.example.librarymanagement.entity.User;
 
 public class UserInfoController {
 

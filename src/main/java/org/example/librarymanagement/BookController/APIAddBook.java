@@ -1,4 +1,4 @@
-package org.example.librarymanagement.BookController;
+package org.example.librarymanagement.bookController;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import org.example.librarymanagement.Class.Book;
+import org.example.librarymanagement.entity.Book;
 import org.example.librarymanagement.GoogleAPIConnection;
 import org.example.librarymanagement.UIHelper;
 

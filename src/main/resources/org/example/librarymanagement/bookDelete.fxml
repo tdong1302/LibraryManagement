@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="460.0" prefWidth="719.0"
             xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="org.example.librarymanagement.BookController.BookDeleteController">
+            fx:controller="org.example.librarymanagement.bookController.BookDeleteController">
     <children>
         <Button fx:id="btnBack" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#actionBack"
                 prefHeight="30.0" prefWidth="66.0" text="BACK">
