@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -62,22 +63,23 @@ public class BookListController implements Initializable {
         });
     }
 
-    private void openBookDetails(Book selectedBook) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/librarymanagement/book_detail.fxml"));
-            Parent root = loader.load();
+        private void openBookDetails(Book selectedBook) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/librarymanagement/book_detail.fxml"));
+                Parent root = loader.load();
 
-            BookDetailController controller = loader.getController();
-            controller.setBook(selectedBook);
+                BookDetailController controller = loader.getController();
+                controller.setBook(selectedBook);
 
-            Stage stage = new Stage();
-            stage.setTitle("Book Details");
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+                Stage stage = new Stage();
+                stage.getIcons().add(new Image(UIHelper.class.getResource("/org/example/librarymanagement/image/logo.png").toExternalForm()));
+                stage.setTitle("Book Details");
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
 
     private void initializeColumns() {
         bookISBNColumn.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
