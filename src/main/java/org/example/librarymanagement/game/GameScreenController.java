@@ -92,6 +92,7 @@ public class GameScreenController {
         String userGuess = guessTextField.getText().trim();
 
         if (userGuess.equalsIgnoreCase(correctAnswer.getTitle())) {
+            score += 5;
             updateScoreLabel();
             submitButton.setDisable(true);
             incorrectGuessCount = 0;
@@ -129,7 +130,6 @@ public class GameScreenController {
 
     private void updateScoreLabel() {
         scoreLabel.setText("Điểm: " + score);
-        score += 5;
     }
 
     private void disableGame() {

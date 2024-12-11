@@ -31,3 +31,16 @@ CREATE TABLE book_lent (
 );
 INSERT INTO Users (FullName, Password, Address, Email, Phone)
 VALUES ('taikoanadmin', 'admin', 'diachi', 'admin', '039');
+
+INSERT INTO Books (ISBN, Title, Author, Year, PageNumber, quantity, description)
+VALUES
+('9786043201582', 'Tôi thấy hoa vàng trên cỏ xanh', 'Nguyễn Nhật Ánh', 2015, 288, 100, 'Cuốn sách kể về tuổi thơ của cậu bé học trò ở một làng quê, với những kỷ niệm ngọt ngào và những câu chuyện tình yêu đầu đời trong sáng.'),
+('9786042114683', 'Dế Mèn Phiêu Lưu Ký', 'Tô Hoài', 1941, 160, 150, 'Cuốn sách kể về cuộc phiêu lưu của chú dế, qua đó thể hiện những bài học về tình bạn, lòng dũng cảm và sự trưởng thành.'),
+('9786049815826', 'Mắt biếc', 'Nguyễn Nhật Ánh', 1999, 384, 200, 'Cuốn sách nói về tình yêu đơn phương, tình bạn và những nỗi niềm sâu kín của những người trẻ tuổi trong xã hội Việt Nam.'),
+('9784041015738', 'One Piece', 'Eiichiro Oda', 1997, 200, 500, 'Truyện tranh nổi tiếng về cuộc phiêu lưu của hải tặc trên hành trình tìm kiếm kho báu vĩ đại'),
+('9784088737055', 'Naruto', 'Masashi Kishimoto', 1999, 180, 450, 'Câu chuyện về cậu bé ninja người muốn trở thành Hokage để được công nhận và yêu thương trong làng Konoha.'),
+('9781421522299', 'Dragon Ball', 'Akira Toriyama', 1984, 195, 600, 'Truyện kể về cuộc phiêu lưu của một cậu bé với sức mạnh phi thường, và hành trình tìm kiếm các viên ngọc rồng để thực hiện các điều ước.'),
+('9780140444308', 'Hoàng Tử Bé', 'Antoine de Saint-Exupéry', 1943, 96, 300, 'Một câu chuyện ngắn nhưng đầy triết lý về cuộc sống, tình yêu và sự trưởng thành, được viết dưới dạng một câu chuyện tưởng tượng dành cho trẻ em nhưng lại chứa đựng những thông điệp sâu sắc cho người lớn.'),
+('9780140444315', 'Những Người Khốn Khổ', 'Victor Hugo', 1862, 1232, 150, 'Cuốn tiểu thuyết đồ sộ của Victor Hugo kể về cuộc đời của các nhân vật trong bối cảnh xã hội Pháp thế kỷ 19, đặc biệt là Jean Valjean, một người đàn ông cố gắng tìm kiếm sự cứu rỗi trong cuộc sống đầy khó khăn và nghịch cảnh.'),
+('9780060883287', 'Trăm Năm Cô Đơn', 'Gabriel García Márquez', 1967, 417, 200, 'Một kiệt tác của văn học Mỹ Latinh, cuốn sách kể về gia đình Buendía và sự ảnh hưởng của thời gian, tình yêu, và sự cô đơn trong cuộc sống của họ. Đây là một trong những tác phẩm văn học quan trọng nhất của thế kỷ 20.'),
+('9780141031182', 'Đắc Nhân Tâm', 'Dale Carnegie', 1936, 304, 250, 'Cuốn sách nổi tiếng giúp người đọc hiểu và áp dụng những nguyên tắc cơ bản về giao tiếp, xây dựng mối quan hệ và thuyết phục người khác hiệu quả.');
