@@ -63,7 +63,7 @@ public class GameScreenController {
 
     private void loadGame() {
         if (incorrectWrongCount >= 3) {
-            UIHelper.showAlert(Alert.AlertType.INFORMATION, "Bạn đã trả lời sai 3 lần, bạn đã thua cuộc!\\nĐiểm của bạn: \" + score)");
+            UIHelper.showAlert(Alert.AlertType.INFORMATION, "Bạn đã trả lời sai 3 lần, bạn đã thua cuộc!\nĐiểm của bạn: " + score);
             disableGame();
             return;
         }
