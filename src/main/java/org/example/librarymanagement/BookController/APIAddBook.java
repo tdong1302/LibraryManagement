@@ -6,9 +6,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import org.example.librarymanagement.entity.Book;
 import org.example.librarymanagement.GoogleAPIConnection;
 import org.example.librarymanagement.UIHelper;
+import org.example.librarymanagement.entity.Book;
 
 public class APIAddBook {
 
@@ -90,7 +90,10 @@ public class APIAddBook {
         }
 
         selectedBook.setQuantity(quantity);
-
+        if (selectedBook.isISBNExists()) {
+            UIHelper.showAlert(Alert.AlertType.WARNING, "Sách với ISBN này đã tồn tại trong cơ sở dữ liệu");
+            return;
+        }
         try {
             selectedBook.create();
             UIHelper.showAlert(Alert.AlertType.INFORMATION, "Thêm sách thành công!");
