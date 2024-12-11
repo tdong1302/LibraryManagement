@@ -113,7 +113,4 @@ public class Book implements Manage {
         return DatabaseConnection.isISBNBookExist(this.ISBN);
     }
 
-    public Book(String author, String ISBN, String title, int year, int pageNumber, int quantity, String description, String type) {
-
-    }
 }
